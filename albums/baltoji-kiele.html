@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO -->
+    <!-- SEO INFORMACIJA -->
     <title>Baltoji kielė | DP.PORTFOLIO</title>
     <meta name="description" content="Gamtos fotografija: Baltoji kielė. Paukščių gyvenimo akimirkos ir natūrali aplinka.">
     <meta name="robots" content="index, follow">
@@ -15,41 +15,60 @@
     <!-- OPEN GRAPH -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://portfolio.dominikphotofficial.lt/albums/baltoji-kiele.html">
-    <meta property="og:title" content="Baltoji kielė - Gamtos Fotografija">
+    <meta property="og:title" content="Baltoji kielė | DP.PORTFOLIO">
     <meta property="og:description" content="Paukščių ir gamtos akimirkos per DP.PORTFOLIO objektyvą.">
     <meta property="og:image" content="https://i.postimg.cc/KYbYwNkK/bird-01.jpg">
 
-    <!-- STILIUS (su ../) -->
+    <!-- STILIUS IR ŠRIFTAI -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Jost:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style.css"> <!-- Svarbu: ../ -->
     <link rel="icon" type="image/png" href="https://iili.io/fjNLbs4.png">
 </head>
 <body>
 
+    <!-- Loading animacija -->
     <div id="preloader"><div class="loader"></div></div>
 
+    <!-- Header -->
     <header>
-        <div class="logo"><a href="../index.html"><img src="https://iili.io/fjNLbs4.png" alt="DP Logo"></a></div>
-        <div class="burger"><div></div><div></div><div></div></div>
+        <div class="logo">
+            <a href="../index.html"><img src="https://iili.io/fjNLbs4.png" alt="DP Logo"></a>
+        </div>
+        <div class="burger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </header>
 
+    <!-- Meniu -->
     <div class="nav-menu">
         <a href="../index.html">Darbai</a>
         <a href="../about.html">Apie</a>
         <a href="../contacts.html">Kontaktai</a>
     </div>
 
-    <section class="container" style="padding-top: 120px;">
-        <div class="text-content">
-            <h1 style="font-family: 'Jost'; text-transform: uppercase; margin-bottom: 20px;">Baltoji kielė</h1>
-            <p style="color: #555; max-width: 700px; margin: 0 auto;">
-                Gamtos stebėjimas reikalauja kantrybės ir tylos. Šiame albume užfiksuotos baltosios kielės akimirkos jos natūralioje aplinkoje.
+    <!-- ALBUMO TURINYS -->
+    <section class="container" style="padding-top: 140px;">
+        
+        <!-- SUTVARKYTA ANTRAŠTĖ IR APRAŠYMAS -->
+        <div class="text-content" style="margin-bottom: 60px;">
+            <h1 style="font-family: 'Jost'; text-transform: uppercase; margin-bottom: 20px; font-size: 2.5rem; letter-spacing: 2px;">
+                Baltoji kielė
+            </h1>
+            
+            <!-- Dekoratyvinis brūkšnelis -->
+            <div style="width: 50px; height: 2px; background-color: #139393; margin: 0 auto 25px auto;"></div>
+
+            <p style="color: #444; max-width: 600px; margin: 0 auto; line-height: 1.8;">
+                Gamtos stebėjimas reikalauja kantrybės ir tylos. Šiame albume užfiksuotos baltosios kielės akimirkos jos natūraliame prieglobstyje.
             </p>
         </div>
 
-        <div class="gallery-grid" style="margin-top: 50px;">
+        <!-- Galerija -->
+        <div class="gallery-grid">
             <div class="gallery-item"><img src="https://i.postimg.cc/KYbYwNkK/bird-01.jpg" loading="lazy"></div>
             <div class="gallery-item"><img src="https://i.postimg.cc/1zKzQqwv/bird-02.jpg" loading="lazy"></div>
             <div class="gallery-item"><img src="https://i.postimg.cc/1tf4rzVM/bird-03.jpg" loading="lazy"></div>
@@ -61,6 +80,7 @@
         </div>
     </section>
 
+    <!-- Script -->
     <script src="../script.js"></script>
 </body>
 </html>
