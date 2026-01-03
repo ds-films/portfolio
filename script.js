@@ -1,14 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- PRELOADER ---
+    // --- PATAISYTAS PRELOADER (Veikia su laikmačiu) ---
     const preloader = document.getElementById('preloader');
     if(preloader) {
-        window.addEventListener('load', () => {
+        const hidePreloader = () => {
             preloader.style.opacity = '0';
             setTimeout(() => {
                 preloader.style.display = 'none';
             }, 500);
-        });
+        };
+
+        // 1. Bando slėpti kai viskas užsikrauna
+        window.addEventListener('load', hidePreloader);
+
+        // 2. ATSARGINIS PLANAS: Jei per 1 sek. neužsikrauna, vis tiek slepia
+        setTimeout(hidePreloader, 1000);
     }
 
     // --- BURGER MENU ---
@@ -23,13 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- HEADER SCROLL EFFECT ---
     const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
 
     // --- SCROLL ANIMATION (OBSERVER) ---
     const observerOptions = { threshold: 0.1 };
@@ -54,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
-        }, 5000); // Keičiasi kas 5 sekundes
+        }, 5000);
     }
 
     // --- LIGHTBOX (GALERIJOS PERŽIŪRA) ---
@@ -84,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             lbImg.src = galleryItems[currentIndex].src;
             lbCounter.innerText = `${currentIndex + 1} / ${galleryItems.length}`;
             lightbox.classList.add('active');
-            body.style.overflow = 'hidden'; // Stop scrolling
+            body.style.overflow = 'hidden';
         };
 
         const closeLightbox = () => {
@@ -104,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
             openLightbox(currentIndex);
         };
 
-        // Event Listeners
         galleryItems.forEach((img, index) => {
             img.parentElement.addEventListener('click', () => openLightbox(index));
         });
@@ -113,12 +120,10 @@ document.addEventListener('DOMContentLoaded', () => {
         btnNext.addEventListener('click', showNext);
         btnPrev.addEventListener('click', showPrev);
 
-        // Click outside image to close
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) closeLightbox();
         });
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (!lightbox.classList.contains('active')) return;
             if (e.key === 'Escape') closeLightbox();
@@ -126,15 +131,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'ArrowLeft') showPrev();
         });
 
-        // Swipe support (Mobile)
+        // Swipe funkcijos telefonams
         let touchStartX = 0;
         let touchEndX = 0;
         
-        lightbox.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
+        lightbox.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX, {passive: true});
         lightbox.addEventListener('touchend', e => {
             touchEndX = e.changedTouches[0].screenX;
             if (touchStartX - touchEndX > 50) showNext();
             if (touchEndX - touchStartX > 50) showPrev();
-        });
+        }, {passive: true});
     }
 });
