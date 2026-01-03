@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO -->
+    <!-- SEO INFORMACIJA -->
     <title>Rundāle Palace | DP.PORTFOLIO</title>
-    <meta name="description" content="Rundāle Palace albumas – DP.PORTFOLIO. Latvijos baroko perlas, architektūra ir gamtos grožis per minimalistinę prizmę.">
+    <meta name="description" content="Rundāle Palace albumas. Latvijos baroko perlas, architektūra ir gamtos grožis per minimalistinę prizmę.">
     <meta name="robots" content="index, follow">
 
     <!-- CANONICAL -->
@@ -16,21 +16,22 @@
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://portfolio.dominikphotofficial.lt/albums/rundale.html">
     <meta property="og:title" content="Rundāle Palace | DP.PORTFOLIO">
-    <meta property="og:description" content="Peržiūrėkite nuotraukų galeriją: istorija, erdvė ir šviesa.">
+    <meta property="og:description" content="Istorija, erdvė ir šviesa. Peržiūrėkite galeriją.">
     <meta property="og:image" content="https://i.postimg.cc/SNJR5jwY/IMG-5630.jpg">
 
-    <!-- STILIUS (su ../) -->
+    <!-- STILIUS IR ŠRIFTAI -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Jost:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
-    
+    <link rel="stylesheet" href="../style.css"> <!-- Svarbu: ../ -->
     <link rel="icon" type="image/png" href="https://iili.io/fjNLbs4.png">
 </head>
 <body>
 
+    <!-- Loading animacija -->
     <div id="preloader"><div class="loader"></div></div>
 
+    <!-- Header -->
     <header>
         <div class="logo">
             <a href="../index.html"><img src="https://iili.io/fjNLbs4.png" alt="DP Logo"></a>
@@ -42,21 +43,32 @@
         </div>
     </header>
 
+    <!-- Meniu -->
     <div class="nav-menu">
         <a href="../index.html">Darbai</a>
         <a href="../about.html">Apie</a>
         <a href="../contacts.html">Kontaktai</a>
     </div>
 
-    <section class="container" style="padding-top: 120px;">
-        <div class="text-content">
-            <h1 style="font-family: 'Jost'; text-transform: uppercase; margin-bottom: 20px;">Rundāle Palace</h1>
-            <p style="color: #555; max-width: 700px; margin: 0 auto;">
-                Latvijos baroko perlas, kuriame susipina istorija, architektūra ir gamtos grožis.
+    <!-- ALBUMO TURINYS -->
+    <section class="container" style="padding-top: 140px;">
+        
+        <!-- PATAISYTA ANTRAŠTĖ IR APRAŠYMAS -->
+        <div class="text-content" style="margin-bottom: 60px;">
+            <h1 style="font-family: 'Jost'; text-transform: uppercase; margin-bottom: 20px; font-size: 2.5rem; letter-spacing: 2px;">
+                Rundāle Palace
+            </h1>
+            
+            <!-- Mažas dekoratyvinis brūkšnelis (Separator) -->
+            <div style="width: 50px; height: 2px; background-color: #139393; margin: 0 auto 25px auto;"></div>
+
+            <p style="color: #444; max-width: 600px; margin: 0 auto; line-height: 1.8;">
+                Latvijos baroko perlas, kuriame susipina istorija, architektūra ir gamtos grožis. Kiekvienas kampelis čia alsuoja didybe, o šviesa žaidžia senoviniuose koridoriuose.
             </p>
         </div>
 
-        <div class="gallery-grid" style="margin-top: 50px;">
+        <!-- Galerija -->
+        <div class="gallery-grid">
             <div class="gallery-item"><img src="https://i.postimg.cc/SNJR5jwY/IMG-5630.jpg" loading="lazy"></div>
             <div class="gallery-item"><img src="https://i.postimg.cc/qMzqYg9V/LATVIJA-2025-31.jpg" loading="lazy"></div>
             <div class="gallery-item"><img src="https://i.postimg.cc/4N74Pq9v/LATVIJA-2025-32.jpg" loading="lazy"></div>
@@ -84,6 +96,7 @@
         </div>
     </section>
 
+    <!-- Script -->
     <script src="../script.js"></script>
 </body>
 </html>
