@@ -4,39 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO ir DOMENAS -->
+    <!-- SEO ir Meta Duomenys -->
     <title>DP.PORTFOLIO</title>
-    <meta name="description" content="DP.PORTFOLIO – Minimalizmas, erdvė, šviesa ir emocija. Profesionalus fotografas ir short film kūrėjas. Gamta, portretai, architektūra ir istorijų pasakojimas.">
-    <meta name="keywords" content="fotografas, fotografija, portfolio, minimalizmas, gamta, short film, meninė fotografija, Lietuva, Vilnius, fotosesija">
+    <meta name="description" content="DP.PORTFOLIO – Minimalizmas, erdvė, šviesa ir emocija. Profesionalus fotografas ir short film kūrėjas.">
+    <meta name="keywords" content="fotografas, fotografija, portfolio, minimalizmas, gamta, short film, meninė fotografija, Lietuva, Vilnius, DP films">
     <meta name="author" content="Dominik">
     <meta name="robots" content="index, follow">
 
-    <!-- CANONICAL URL -->
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://portfolio.dominikphotofficial.lt/">
 
-    <!-- OPEN GRAPH -->
+    <!-- Open Graph (Socialiniai tinklai) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://portfolio.dominikphotofficial.lt/">
     <meta property="og:title" content="DP.PORTFOLIO | Minimalistinė Fotografija">
     <meta property="og:description" content="Erdvė. Šviesa. Emocija. Pamatykite pasaulį per mano objektyvą.">
     <meta property="og:image" content="https://i.postimg.cc/SNJR5jwY/IMG-5630.jpg">
 
-    <!-- STILIUS IR ŠRIFTAI -->
+    <!-- Šriftai ir Stilius -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Jost:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://iili.io/fjNLbs4.png">
 </head>
 <body>
 
-    <!-- PRELOADER -->
+    <!-- Preloader -->
     <div id="preloader"><div class="loader"></div></div>
 
-    <!-- HEADER SU LOGOTIPU -->
+    <!-- Header -->
     <header>
         <div class="logo">
-            <!-- LOGOTIPAS: Nuoroda į index.html su paveikslėliu -->
             <a href="index.html">
                 <img src="https://iili.io/fjNLbs4.png" alt="DP.PORTFOLIO Logo">
             </a>
@@ -48,19 +49,20 @@
         </div>
     </header>
 
-    <!-- MENIU -->
+    <!-- Navigacija -->
     <div class="nav-menu">
         <a href="index.html">Darbai</a>
+        <a href="films.html">Filmai</a> <!-- Nuoroda į filmų skiltį -->
         <a href="about.html">Apie</a>
         <a href="contacts.html">Kontaktai</a>
     </div>
 
-    <!-- HERO SEKCIJA -->
+    <!-- Hero Sekcija (Slaideris) -->
     <section class="hero">
         <div class="hero-slider">
-            <div class="hero-slide active" style="background-image: url('https://i.postimg.cc/4NqyTsg1/LATVIJA-2025-33.jpg');"></div>
+            <div class="hero-slide active" style="background-image: url('https://i.postimg.cc/SNJR5jwY/IMG-5630.jpg');"></div>
             <div class="hero-slide" style="background-image: url('https://i.postimg.cc/Dy2Q1ryc/Flower-01.jpg');"></div>
-            <div class="hero-slide" style="background-image: url('https://i.postimg.cc/FKvBSf85/vdu-botanikos-sodas_02.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('https://i.postimg.cc/vTpSGtSm/BMWE36-01.jpg');"></div>
         </div>
         <div class="hero-content">
             <h1>DP.PORTFOLIO</h1>
@@ -68,71 +70,84 @@
         </div>
     </section>
 
-    <!-- ALBUMŲ SĄRAŠAS -->
+    <!-- Albumų Tinklelis -->
     <section class="container">
         <h2 class="section-title">Albumai</h2>
         <div class="album-grid">
             
+            <!-- 1. Rundale -->
             <a href="albums/rundale.html" class="album-card">
-                <img src="https://i.postimg.cc/4NqyTsg1/LATVIJA-2025-33.jpg" alt="Rundāle Palace" loading="lazy">
+                <img src="https://i.postimg.cc/SNJR5jwY/IMG-5630.jpg" alt="Rundāle Palace" loading="lazy">
                 <div class="album-overlay"><span class="album-title">Rundāle Palace</span></div>
             </a>
 
+            <!-- 2. NOKA -->
             <a href="albums/noka.html" class="album-card">
                 <img src="https://i.postimg.cc/28SthTZg/noka-car-01.jpg" alt="NOKA Gathering" loading="lazy">
                 <div class="album-overlay"><span class="album-title">NOKA Gathering</span></div>
             </a>
 
+            <!-- 3. Gėlės -->
             <a href="albums/geles.html" class="album-card">
                 <img src="https://i.postimg.cc/Dy2Q1ryc/Flower-01.jpg" alt="Gėlės" loading="lazy">
                 <div class="album-overlay"><span class="album-title">Gėlės</span></div>
             </a>
 
+            <!-- 4. Baltoji kielė -->
             <a href="albums/baltoji-kiele.html" class="album-card">
                 <img src="https://i.postimg.cc/KYbYwNkK/bird-01.jpg" alt="Baltoji kielė" loading="lazy">
                 <div class="album-overlay"><span class="album-title">Baltoji kielė</span></div>
             </a>
 
+            <!-- 5. BMW E36 -->
             <a href="albums/bmw-e36.html" class="album-card">
                 <img src="https://i.postimg.cc/vTpSGtSm/BMWE36-01.jpg" alt="BMW E36" loading="lazy">
                 <div class="album-overlay"><span class="album-title">BMW E36</span></div>
             </a>
-            
+
+            <!-- 6. Cirkliškis -->
             <a href="albums/cirkliskis.html" class="album-card">
                 <img src="https://i.postimg.cc/x8pRF86C/cirkliskis-01.jpg" alt="Cirkliškis" loading="lazy">
                 <div class="album-overlay"><span class="album-title">Cirkliškis</span></div>
             </a>
 
+            <!-- 7. Sirvėtos regioninis parkas -->
             <a href="albums/sirvetos-parkas.html" class="album-card">
-                <img src="https://i.postimg.cc/X7gd6GTN/srp-01.jpg" alt="Sirvėtos parkas" loading="lazy">
+                <img src="https://i.postimg.cc/X7gd6GTN/srp-01.jpg" alt="Sirvėtos regioninis parkas" loading="lazy">
                 <div class="album-overlay"><span class="album-title">Sirvėtos parkas</span></div>
             </a>
 
+            <!-- 8. Šventa -->
             <a href="albums/Sventa.html" class="album-card">
                 <img src="https://i.postimg.cc/QM6Nbm4p/venta-0.jpg" alt="Šventa" loading="lazy">
                 <div class="album-overlay"><span class="album-title">Šventa</span></div>
             </a>
 
+            <!-- 9. VDU Botanikos Sodas -->
             <a href="albums/vdu-sodas.html" class="album-card">
                 <img src="https://i.postimg.cc/HL0Fv0Xk/vdu-botanikos-sodas-01.jpg" alt="VDU Botanikos Sodas" loading="lazy">
                 <div class="album-overlay"><span class="album-title">VDU Botanikos Sodas</span></div>
             </a>
 
+            <!-- 10. Molėtų observatorija -->
             <a href="albums/moletu-observatorija.html" class="album-card">
                 <img src="https://i.postimg.cc/3x3PgfJH/Teleskopas-165-cm.png" alt="Molėtų observatorija" loading="lazy">
                 <div class="album-overlay"><span class="album-title">Molėtų observatorija</span></div>
             </a>
 
+            <!-- 11. Gandras -->
             <a href="albums/gandras.html" class="album-card">
                 <img src="https://i.postimg.cc/KYtMgjLT/Gandras-01.jpg" alt="Gandras" loading="lazy">
                 <div class="album-overlay"><span class="album-title">Gandras</span></div>
             </a>
 
+            <!-- 12. M. ir K. Petrauskų Namai -->
             <a href="albums/petrausku-namai.html" class="album-card">
                 <img src="https://i.postimg.cc/8k0XLvTx/miko-ir-kipro-petrausku-namai-01.jpg" alt="M. ir K. Petrauskų Namai" loading="lazy">
                 <div class="album-overlay"><span class="album-title">M. ir K. Petrauskų Namai</span></div>
             </a>
 
+            <!-- 13. Valdovų Rūmai -->
             <a href="albums/valdovu-rumai.html" class="album-card">
                 <img src="https://i.postimg.cc/C5XjhNy7/Vilniaus-muziejus.png" alt="Valdovų Rūmai" loading="lazy">
                 <div class="album-overlay"><span class="album-title">Valdovų Rūmai</span></div>
@@ -141,7 +156,7 @@
         </div>
     </section>
 
-    <!-- Skripto failas -->
+    <!-- Skripto Pajungimas -->
     <script src="script.js"></script>
 </body>
-</
+</html>
