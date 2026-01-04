@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- PRELOADER (Sutvarkytas) ---
+    // --- 1. PRELOADER (Sutvarkytas, kad nestrigtų) ---
     const preloader = document.getElementById('preloader');
     if(preloader) {
         const hidePreloader = () => {
@@ -10,14 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500);
         };
 
-        // 1. Slepiame kai viskas užsikrauna
+        // Standartinis: slepiame kai viskas užsikrauna
         window.addEventListener('load', hidePreloader);
 
-        // 2. ATSARGINIS VARIANTAS: Jei per 1 sek. neužsikrauna, vis tiek rodyti svetainę
+        // Atsarginis: Jei per 1 sek. neužsikrauna (pvz. lėtas internetas), vis tiek rodyti svetainę
         setTimeout(hidePreloader, 1000);
     }
 
-    // --- BURGER MENU ---
+    // --- 2. BURGER MENU ---
     const burger = document.querySelector('.burger');
     const body = document.body;
     
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- HEADER SCROLL EFFECT ---
+    // --- 3. HEADER SCROLL EFFECT ---
     const header = document.querySelector('header');
     if (header) {
         window.addEventListener('scroll', () => {
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- ANIMACIJA SLENKANT ŽEMYN (Intersection Observer) ---
+    // --- 4. ANIMACIJA SLENKANT (Intersection Observer) ---
     const observerOptions = { threshold: 0.1 };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -50,11 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.gallery-item, .album-card').forEach(item => {
+    // Stebime galerijos elementus ir albumų korteles
+    document.querySelectorAll('.gallery-item, .album-card, .film-card').forEach(item => {
         observer.observe(item);
     });
 
-    // --- HERO SLIDER (Tik pagrindiniame puslapyje) ---
+    // --- 5. HERO SLIDER (Tik pagrindiniame puslapyje) ---
     const slides = document.querySelectorAll('.hero-slide');
     if (slides.length > 0) {
         let currentSlide = 0;
@@ -62,13 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
-        }, 5000); // Keičiasi kas 5 sek.
+        }, 5000); // Keičiasi kas 5 sekundes
     }
 
-    // --- LIGHTBOX (Galerijos peržiūra) ---
+    // --- 6. LIGHTBOX (Nuotraukų peržiūra) ---
     const galleryItems = document.querySelectorAll('.gallery-item img');
     if (galleryItems.length > 0) {
-        // Sukuriame Lightbox elementus dinamiškai
+        // Sukuriame Lightbox HTML dinamiškai
         const lightbox = document.createElement('div');
         lightbox.id = 'lightbox';
         lightbox.innerHTML = `
@@ -80,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         document.body.appendChild(lightbox);
 
+        // Elementų pasirinkimas
         const lbImg = lightbox.querySelector('img');
         const lbCounter = lightbox.querySelector('.lb-counter');
         const lbClose = lightbox.querySelector('.lb-close');
@@ -88,19 +90,22 @@ document.addEventListener('DOMContentLoaded', () => {
         
         let currentIndex = 0;
 
+        // Atidarymo funkcija
         const openLightbox = (index) => {
             currentIndex = index;
             lbImg.src = galleryItems[currentIndex].src;
             lbCounter.innerText = `${currentIndex + 1} / ${galleryItems.length}`;
             lightbox.classList.add('active');
-            body.style.overflow = 'hidden'; // Sustabdo scrollinimą fone
+            body.style.overflow = 'hidden'; // Sustabdo puslapio scrollinimą
         };
 
+        // Uždarymo funkcija
         const closeLightbox = () => {
             lightbox.classList.remove('active');
             body.style.overflow = 'auto';
         };
 
+        // Kitas / Ankstesnis
         const showNext = (e) => {
             if(e) e.stopPropagation();
             currentIndex = (currentIndex + 1) % galleryItems.length;
@@ -113,22 +118,21 @@ document.addEventListener('DOMContentLoaded', () => {
             openLightbox(currentIndex);
         };
 
-        // Paspaudus ant nuotraukos
+        // Event Listeners (Paspaudimai)
         galleryItems.forEach((img, index) => {
             img.parentElement.addEventListener('click', () => openLightbox(index));
         });
 
-        // Mygtukų funkcijos
         lbClose.addEventListener('click', closeLightbox);
         btnNext.addEventListener('click', showNext);
         btnPrev.addEventListener('click', showPrev);
 
-        // Uždaryti paspaudus už nuotraukos ribų
+        // Uždaryti paspaudus bet kur fone
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) closeLightbox();
         });
 
-        // Klaviatūros valdymas
+        // Klaviatūros valdymas (ESC, Rodyklės)
         document.addEventListener('keydown', (e) => {
             if (!lightbox.classList.contains('active')) return;
             if (e.key === 'Escape') closeLightbox();
@@ -136,15 +140,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'ArrowLeft') showPrev();
         });
 
-        // "Swipe" funkcija telefonams (Braukimas)
+        // Swipe (Braukimas pirštu telefonuose)
         let touchStartX = 0;
         let touchEndX = 0;
         
         lightbox.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX, {passive: true});
         lightbox.addEventListener('touchend', e => {
             touchEndX = e.changedTouches[0].screenX;
-            if (touchStartX - touchEndX > 50) showNext(); // Braukta į kairę -> Kitas
-            if (touchEndX - touchStartX > 50) showPrev(); // Braukta į dešinę -> Atgal
+            if (touchStartX - touchEndX > 50) showNext(); // Braukta į kairę
+            if (touchEndX - touchStartX > 50) showPrev(); // Braukta į dešinę
         }, {passive: true});
     }
 });
