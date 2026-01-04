@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Films | DP.PORTFOLIO</title>
+    <!-- PATAISYTAS PAVADINIMAS -->
+    <title>Filmai | DP.PORTFOLIO</title>
+    
     <meta name="description" content="DP FILMS – Cinematic video, short films ir gamtos dokumentika. Autorius Dominik Šuškevič.">
     <meta name="keywords" content="DP films, short film, cinematic video, nature video, Dominik Šuškevič, portfolio">
     <meta name="robots" content="index, follow">
@@ -12,7 +14,7 @@
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://portfolio.dominikphotofficial.lt/films.html">
-    <meta property="og:title" content="Films | DP.PORTFOLIO">
+    <meta property="og:title" content="DP FILMS | Cinematic Video">
     <meta property="og:image" content="https://i.postimg.cc/15JJq3HP/Winter-cirkliskis.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,7 +22,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="https://iili.io/fjNLbs4.png">
 </head>
-<body>
+
+<!-- "cinema-mode" klasė užtikrina tamsų foną ir stilių -->
+<body class="cinema-mode">
 
     <div id="preloader"><div class="loader"></div></div>
 
@@ -31,43 +35,57 @@
 
     <div class="nav-menu">
         <a href="index.html">Darbai</a>
-        <a href="films.html">Filmai</a> <!-- Naujas punktas -->
+        <a href="films.html">Filmai</a>
         <a href="about.html">Apie</a>
         <a href="contacts.html">Kontaktai</a>
     </div>
 
-    <section class="container" style="padding-top: 140px;">
-        <h1 class="section-title">Filmai</h1>
-        <div class="album-grid">
+    <section class="container" style="padding-top: 120px;">
+        <!-- Pakeista antraštė -->
+        <h1 class="section-title" style="color: #fff; text-align: left; padding-left: 5px; border-left: 3px solid #139393; line-height: 1; margin-bottom: 40px;">
+            DP FILMS
+        </h1>
+        
+        <div class="netflix-grid">
             
             <!-- Winter Cirkliškis -->
-            <a href="films/winter-cirkliskis-2025.html" class="album-card">
+            <a href="films/winter-cirkliskis-2025.html" class="film-card">
                 <img src="https://i.postimg.cc/15JJq3HP/Winter-cirkliskis.png" alt="Winter Cirkliškis" loading="lazy">
-                <div class="album-overlay"><span class="album-title">Winter | Cirkliškis</span></div>
+                <div class="film-overlay">
+                    <span class="film-title">Winter | Cirkliškis</span>
+                </div>
             </a>
 
             <!-- Winter Šventa -->
-            <a href="films/winter-sventa-2025.html" class="album-card">
+            <a href="films/winter-sventa-2025.html" class="film-card">
                 <img src="https://i.postimg.cc/DyBBXwgh/winter-sventa.png" alt="Winter Šventa" loading="lazy">
-                <div class="album-overlay"><span class="album-title">Winter | Šventa</span></div>
+                <div class="film-overlay">
+                    <span class="film-title">Winter | Šventa</span>
+                </div>
             </a>
 
             <!-- Winter Kauno Marios -->
-            <a href="films/winter-kauno-marios-forest-2025.html" class="album-card">
-                <img src="https://i.postimg.cc/65YYvp0X/winter-forest-kauno_-marios.png" alt="Winter Kauno Marios" loading="lazy">
-                <div class="album-overlay"><span class="album-title">Winter | Kauno Marios</span></div>
+            <a href="films/winter-kauno-marios-forest-2025.html" class="film-card">
+                <img src="https://i.postimg.cc/65YYvp0X/winter-forest-kauno_-marios.png" alt="Kauno Marios" loading="lazy">
+                <div class="film-overlay">
+                    <span class="film-title">Winter | Kauno Marios</span>
+                </div>
             </a>
 
             <!-- Exit 2024 -->
-            <a href="films/exit-ziema-2024.html" class="album-card">
+            <a href="films/exit-ziema-2024.html" class="film-card">
                 <img src="https://i.postimg.cc/y8ktMLYc/exit.jpg" alt="Exit 2024" loading="lazy">
-                <div class="album-overlay"><span class="album-title">Exit | Žiema 2024</span></div>
+                <div class="film-overlay">
+                    <span class="film-title">Exit | Žiema 2024</span>
+                </div>
             </a>
 
             <!-- Exit 2025 -->
-            <a href="films/exit-2025.html" class="album-card">
+            <a href="films/exit-2025.html" class="film-card">
                 <img src="https://i.postimg.cc/y8ktMLYc/exit.jpg" alt="Exit 2025" loading="lazy">
-                <div class="album-overlay"><span class="album-title">Exit | 2025</span></div>
+                <div class="film-overlay">
+                    <span class="film-title">Exit | 2025</span>
+                </div>
             </a>
 
         </div>
