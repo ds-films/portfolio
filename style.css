@@ -1,6 +1,7 @@
 :root {
-    --bg-color: #FFFFFF;
-    --text-color: #222222;
+    --bg-color: #f4f4f4; /* Švelniai pilkas fonas, kad išryškėtų baltos kortelės */
+    --card-bg: #ffffff;
+    --text-color: #333333;
     --accent-color: #139393;
     --font-heading: 'Jost', sans-serif;
     --font-body: 'Josefin Sans', sans-serif;
@@ -22,98 +23,43 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, a, .nav-link {
-    font-family: var(--font-heading);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: 0.3s ease;
-}
-
-img {
-    width: 100%;
-    display: block;
-    object-fit: cover;
-}
-
-#preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--bg-color);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.5s ease;
-}
-
-.loader {
-    width: 50px;
-    height: 50px;
-    border: 3px solid #eee;
-    border-top: 3px solid var(--accent-color);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
+/* --- HEADER --- */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 40px;
+    padding: 20px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    transition: background 0.3s ease, padding 0.3s ease;
-}
-
-header.scrolled {
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    padding: 15px 40px;
+    background: rgba(255, 255, 255, 0.95); /* Baltas, šiek tiek permatomas */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05); /* Švelnus šešėlis apačioje */
 }
 
 .logo img {
-    height: 40px;
+    height: 35px;
     width: auto;
-    transition: 0.3s;
-}
-
-.burger {
-    cursor: pointer;
-    z-index: 1001;
 }
 
 .burger div {
     width: 30px;
     height: 2px;
-    background-color: var(--text-color);
+    background-color: #222;
     margin: 6px 0;
     transition: 0.4s;
 }
 
-body.nav-active .burger div:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
-body.nav-active .burger div:nth-child(2) { opacity: 0; }
-body.nav-active .burger div:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
-
+/* --- MENIU --- */
 .nav-menu {
     position: fixed;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100vh;
-    background: var(--bg-color);
+    background: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -122,306 +68,154 @@ body.nav-active .burger div:nth-child(3) { transform: rotate(45deg) translate(-5
     z-index: 999;
 }
 
-body.nav-active .nav-menu {
-    left: 0;
-}
-
+body.nav-active .nav-menu { left: 0; }
 .nav-menu a {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin: 20px 0;
-    color: var(--text-color);
+    color: #222;
+    text-decoration: none;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
 }
 
-.nav-menu a:hover {
-    color: var(--accent-color);
+/* --- TURINYS --- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    /* Svarbu: didesnis tarpas nuo viršaus mobiliesiems */
+    padding: 160px 20px 60px 20px; 
 }
 
-.hero {
-    height: 100vh;
-    width: 100%;
+.section-title {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* --- PASLAUGŲ KORTELĖS (NAUJAS STILIUS) --- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.service-card {
+    background-color: var(--card-bg);
+    padding: 40px 30px;
+    border-radius: 16px; /* Modernūs apvalūs kampai */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06); /* Minkštas šešėlis */
+    transition: transform 0.3s ease;
     position: relative;
     overflow: hidden;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #ffffff;
-    text-align: center;
+    flex-direction: column;
+    border: 1px solid rgba(0,0,0,0.03);
 }
 
-.hero::after {
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Dekoratyvinė linija kortelės viršuje */
+.service-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.2);
-    z-index: 0;
+    height: 4px;
+    background: var(--accent-color);
 }
 
-.hero-slider, .hero-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
-.hero-slide {
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-}
-
-.hero-slide.active { opacity: 1; }
-
-.hero-content {
-    z-index: 1;
-    text-shadow: 0 2px 15px rgba(0,0,0,0.6);
-    padding: 0 20px;
-}
-
-.hero-content h1 {
-    font-size: 4rem;
-    margin-bottom: 10px;
-    color: #ffffff;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #ffffff;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 100px 20px;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 50px;
-    font-weight: 400;
-}
-
-.text-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 1.1rem;
-}
-
-.album-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.album-card {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    aspect-ratio: 4/5;
-}
-
-.album-card img {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s ease;
-}
-
-.album-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: 0.4s ease;
-}
-
-.album-title {
-    color: #fff;
+.service-title {
+    font-family: var(--font-heading);
     font-size: 1.5rem;
-    border-bottom: 2px solid var(--accent-color);
-    padding-bottom: 5px;
-    transform: translateY(20px);
-    transition: 0.4s ease;
+    margin-bottom: 15px;
+    color: #222;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.album-card:hover img { transform: scale(1.05); }
-.album-card:hover .album-overlay { opacity: 1; }
-.album-card:hover .album-title { transform: translateY(0); }
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
+.service-desc {
+    font-size: 1.05rem;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 30px;
 }
 
-.gallery-item {
-    cursor: pointer;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 0.6s ease;
+.service-tag {
+    margin-top: auto; /* Nustumia į apačią */
+    align-self: flex-start;
+    background-color: rgba(19, 147, 147, 0.1); /* Šviesi akcento spalva */
+    color: var(--accent-color);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.gallery-item.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.gallery-item img {
-    height: 100%;
-    transition: transform 0.3s;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.03);
-    filter: brightness(0.9);
-}
-
-#lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.95);
-    z-index: 2000;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-#lightbox.active { display: flex; }
-
-#lightbox img {
-    max-width: 90%;
-    max-height: 80vh;
-    object-fit: contain;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
-
-.lb-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 3rem;
-    cursor: pointer;
-    padding: 20px;
-    opacity: 0.7;
-    transition: 0.3s;
-}
-
-.lb-btn:hover { opacity: 1; color: var(--accent-color); }
-.lb-prev { left: 20px; }
-.lb-next { right: 20px; }
-
-.lb-close {
-    position: absolute;
-    top: 30px;
-    right: 40px;
-    color: #fff;
-    font-size: 2rem;
-    cursor: pointer;
-}
-
-.lb-counter {
-    position: absolute;
-    top: 30px;
-    left: 40px;
-    color: #fff;
-    font-family: var(--font-body);
-}
-
-.contact-card {
-    background-color: #fcfcfc;
-    border: 1px solid #eee;
-    padding: 50px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-    max-width: 600px;
-    width: 100%;
-    margin: 0 auto;
+/* --- LOKACIJA --- */
+.location-banner {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 16px;
     text-align: center;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.04);
+    margin-top: 30px;
 }
 
-.contact-label {
+.location-label {
     display: block;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    color: #999;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #999;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
-.contact-value {
-    font-size: 1.5rem;
+.location-text {
     font-family: var(--font-heading);
+    font-size: 1.4rem;
     color: #222;
+}
+
+/* --- MYGTUKAS --- */
+.action-btn {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 15px 35px;
+    background-color: var(--text-color);
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
     transition: 0.3s;
-    border-bottom: 1px solid transparent;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-.contact-value:hover {
-    color: var(--accent-color);
-    border-bottom: 1px solid var(--accent-color);
+.action-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
 }
 
-.contact-group {
-    margin-bottom: 40px;
-}
+/* --- PRELOADER --- */
+#preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease; }
+.loader { width: 50px; height: 50px; border: 3px solid #eee; border-top: 3px solid var(--accent-color); border-radius: 50%; animation: spin 1s linear infinite; }
 
-.contact-links a {
-    font-size: 0.9rem;
-    color: #666;
-    margin: 0 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-.contact-links a:hover {
-    color: var(--accent-color);
-    border-color: var(--accent-color);
-}
-
-@media (max-width: 1024px) {
-    .container { padding: 80px 20px; }
-    .hero-content h1 { font-size: 3.5rem; }
-}
-
+/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-    header { padding: 15px 20px; }
-    .logo img { height: 30px; }
-    .hero-content h1 { font-size: 2.5rem; }
-    .hero-content p { font-size: 1rem; letter-spacing: 2px; }
-    .section-title { font-size: 2rem; margin-bottom: 30px; }
-    .album-grid { grid-template-columns: 1fr; gap: 20px; }
-    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
-    .lb-btn { font-size: 2rem; padding: 10px; }
-    .lb-prev { left: 5px; }
-    .lb-next { right: 5px; }
-    .lb-close { right: 20px; top: 20px; }
-    .lb-counter { left: 20px; top: 20px; font-size: 0.9rem; }
-    .contact-card { padding: 30px 20px; }
-    .contact-value { font-size: 1.2rem; }
-}
-
-@media (max-width: 480px) {
-    .hero-content h1 { font-size: 2rem; }
-    .nav-menu a { font-size: 1.5rem; }
+    .container { padding-top: 130px; } /* Dar daugiau vietos telefonams */
+    .section-title { font-size: 1.8rem; margin-bottom: 30px; }
+    .services-grid { grid-template-columns: 1fr; } /* Viena kortelė per eilutę */
+    .service-card { padding: 30px 25px; }
 }
