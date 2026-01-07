@@ -1,10 +1,11 @@
 :root {
-    --bg-color: #f4f4f4; /* Švelniai pilkas fonas, kad išryškėtų baltos kortelės */
-    --card-bg: #ffffff;
+    --bg-color: #fafafa;
     --text-color: #333333;
     --accent-color: #139393;
     --font-heading: 'Jost', sans-serif;
     --font-body: 'Josefin Sans', sans-serif;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --card-hover-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -17,205 +18,528 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 17px;
+    line-height: 1.8;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
 }
 
-/* --- HEADER --- */
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+h1, h2, h3, a, .nav-link {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1a1a1a;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 30px;
+    padding: 25px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.95); /* Baltas, šiek tiek permatomas */
+    transition: all 0.4s ease;
+    background: transparent;
+}
+
+header.scrolled {
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    box-shadow: 0 2px 15px rgba(0,0,0,0.05); /* Švelnus šešėlis apačioje */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+    padding: 15px 50px;
 }
 
 .logo img {
-    height: 35px;
+    height: 45px;
     width: auto;
+    transition: 0.3s;
+}
+
+.burger {
+    cursor: pointer;
+    z-index: 1001;
+    padding: 10px;
 }
 
 .burger div {
-    width: 30px;
+    width: 35px;
     height: 2px;
-    background-color: #222;
-    margin: 6px 0;
+    background-color: #1a1a1a;
+    margin: 7px 0;
     transition: 0.4s;
 }
 
-/* --- MENIU --- */
+body.nav-active .burger div:nth-child(1) { transform: rotate(-45deg) translate(-6px, 7px); }
+body.nav-active .burger div:nth-child(2) { opacity: 0; }
+body.nav-active .burger div:nth-child(3) { transform: rotate(45deg) translate(-6px, -7px); }
+
 .nav-menu {
     position: fixed;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100vh;
-    background: #fff;
+    background: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: 0.5s ease;
+    transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1);
     z-index: 999;
 }
 
-body.nav-active .nav-menu { left: 0; }
+body.nav-active .nav-menu {
+    left: 0;
+}
+
 .nav-menu a {
-    font-size: 1.8rem;
-    margin: 20px 0;
-    color: #222;
-    text-decoration: none;
-    font-family: var(--font-heading);
-    text-transform: uppercase;
-}
-
-/* --- TURINYS --- */
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    /* Svarbu: didesnis tarpas nuo viršaus mobiliesiems */
-    padding: 160px 20px 60px 20px; 
-}
-
-.section-title {
-    text-align: center;
-    font-family: var(--font-heading);
     font-size: 2.2rem;
-    margin-bottom: 50px;
+    margin: 25px 0;
     color: #1a1a1a;
-    text-transform: uppercase;
-    letter-spacing: 3px;
+    font-weight: 300;
 }
 
-/* --- PASLAUGŲ KORTELĖS (NAUJAS STILIUS) --- */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-bottom: 50px;
+.nav-menu a:hover {
+    color: var(--accent-color);
+    transform: scale(1.05);
 }
 
-.service-card {
-    background-color: var(--card-bg);
-    padding: 40px 30px;
-    border-radius: 16px; /* Modernūs apvalūs kampai */
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06); /* Minkštas šešėlis */
-    transition: transform 0.3s ease;
+.hero {
+    height: 100vh;
+    width: 100%;
     position: relative;
     overflow: hidden;
     display: flex;
-    flex-direction: column;
-    border: 1px solid rgba(0,0,0,0.03);
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
 }
 
-.service-card:hover {
-    transform: translateY(-5px);
-}
-
-/* Dekoratyvinė linija kortelės viršuje */
-.service-card::before {
-    content: '';
+.hero-slider, .hero-slide {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 4px;
-    background: var(--accent-color);
+    height: 100%;
+    z-index: -1;
+}
+
+.hero-slide {
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.hero-slide.active { opacity: 1; }
+
+.hero-content {
+    z-index: 1;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 120px 30px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 70px;
+    font-weight: 400;
+    color: #1a1a1a;
+}
+
+.text-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.15rem;
+    color: #444;
+}
+
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.album-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 4/5;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.album-card img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s ease;
+}
+
+.album-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 20, 20, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: 0.4s ease;
+}
+
+.album-title {
+    color: #fff;
+    font-size: 1.6rem;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 8px;
+    transform: translateY(30px);
+    transition: 0.4s ease;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.album-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-hover-shadow);
+}
+
+.album-card:hover img {
+    transform: scale(1.08);
+}
+
+.album-card:hover .album-overlay {
+    opacity: 1;
+}
+
+.album-card:hover .album-title {
+    transform: translateY(0);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+}
+
+.gallery-item {
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.6s ease;
+}
+
+.gallery-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gallery-item img {
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.02);
+    filter: brightness(0.98);
+}
+
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#lightbox.active { display: flex; }
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 85vh;
+    object-fit: contain;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+
+.lb-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #222;
+    font-size: 3.5rem;
+    cursor: pointer;
+    padding: 20px;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.lb-btn:hover {
+    opacity: 1;
+    color: var(--accent-color);
+}
+
+.lb-prev { left: 30px; }
+.lb-next { right: 30px; }
+
+.lb-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: #222;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.lb-close:hover { color: var(--accent-color); }
+
+.lb-counter {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    color: #666;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    font-size: 1.3rem;
+    color: #444;
+}
+
+.contact-item {
+    text-align: center;
+}
+
+.contact-item span {
+    display: block;
+    font-size: 0.9rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.contact-item a {
+    border-bottom: 1px solid transparent;
+    transition: 0.3s;
+    color: #222;
+}
+
+.contact-item a:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.service-card {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 3px solid var(--accent-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
 .service-title {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
     color: #222;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 .service-desc {
-    font-size: 1.05rem;
-    color: #666;
-    line-height: 1.7;
-    margin-bottom: 30px;
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
 }
 
 .service-tag {
-    margin-top: auto; /* Nustumia į apačią */
-    align-self: flex-start;
-    background-color: rgba(19, 147, 147, 0.1); /* Šviesi akcento spalva */
-    color: var(--accent-color);
-    padding: 8px 16px;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 600;
+    display: inline-block;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-}
-
-/* --- LOKACIJA --- */
-.location-banner {
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 16px;
-    text-align: center;
-    box-shadow: 0 5px 30px rgba(0,0,0,0.04);
-    margin-top: 30px;
-}
-
-.location-label {
-    display: block;
-    font-size: 0.8rem;
     color: #999;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+    border: 1px solid #eee;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-top: auto;
+}
+
+.location-banner {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+    margin-top: 40px;
 }
 
 .location-text {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: #222;
+    font-family: var(--font-heading);
 }
 
-/* --- MYGTUKAS --- */
-.action-btn {
+.back-btn-dark {
     display: inline-block;
-    margin-top: 40px;
-    padding: 15px 35px;
-    background-color: var(--text-color);
-    color: #fff;
-    text-decoration: none;
+    padding: 12px 30px;
+    border: 1px solid #222;
+    color: #222;
     font-family: var(--font-heading);
+    font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border-radius: 50px;
+    border-radius: 4px;
     transition: 0.3s;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-.action-btn:hover {
-    background-color: var(--accent-color);
-    transform: translateY(-2px);
+.back-btn-dark:hover {
+    background-color: #222;
+    color: #fff;
 }
 
-/* --- PRELOADER --- */
-#preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 9999; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease; }
-.loader { width: 50px; height: 50px; border: 3px solid #eee; border-top: 3px solid var(--accent-color); border-radius: 50%; animation: spin 1s linear infinite; }
+@media (max-width: 1024px) {
+    .container { padding: 100px 25px; }
+    .hero-content h1 { font-size: 3.5rem; }
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+}
 
-/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-    .container { padding-top: 130px; } /* Dar daugiau vietos telefonams */
-    .section-title { font-size: 1.8rem; margin-bottom: 30px; }
-    .services-grid { grid-template-columns: 1fr; } /* Viena kortelė per eilutę */
-    .service-card { padding: 30px 25px; }
+    header { padding: 20px; }
+    .logo img { height: 35px; }
+    .hero-content h1 { font-size: 2.5rem; }
+    .hero-content p { font-size: 1rem; letter-spacing: 2px; }
+    .section-title { font-size: 2.2rem; margin-bottom: 40px; }
+    
+    .album-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .lb-btn { font-size: 2.5rem; padding: 10px; }
+    .lb-prev { left: 10px; } .lb-next { right: 10px; }
+    .lb-close { right: 20px; top: 20px; }
+    .lb-counter { left: 20px; top: 20px; font-size: 0.9rem; }
+    
+    .container { padding: 100px 20px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { padding: 30px; }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 { font-size: 2rem; }
+    .nav-menu a { font-size: 1.8rem; }
+    .text-content h1 { font-size: 2rem !important; }
+    .container { padding: 80px 15px; }
 }
