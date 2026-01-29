@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 1. PRELOADER (Sutvarkytas, kad nestrigtų) ---
     const preloader = document.getElementById('preloader');
     if(preloader) {
         const hidePreloader = () => {
@@ -10,14 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500);
         };
 
-        // Standartinis: slepiame kai viskas užsikrauna
         window.addEventListener('load', hidePreloader);
-
-        // Atsarginis: Jei per 1 sek. neužsikrauna (pvz. lėtas internetas), vis tiek rodyti svetainę
         setTimeout(hidePreloader, 1000);
     }
 
-    // --- 2. BURGER MENU ---
     const burger = document.querySelector('.burger');
     const body = document.body;
     
@@ -27,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 3. HEADER SCROLL EFFECT ---
     const header = document.querySelector('header');
     if (header) {
         window.addEventListener('scroll', () => {
@@ -39,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 4. ANIMACIJA SLENKANT (Intersection Observer) ---
     const observerOptions = { threshold: 0.1 };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -50,12 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    // Stebime galerijos elementus ir albumų korteles
-    document.querySelectorAll('.gallery-item, .album-card, .film-card').forEach(item => {
+    document.querySelectorAll('.gallery-item, .album-card, .service-card').forEach(item => {
         observer.observe(item);
     });
 
-    // --- 5. HERO SLIDER (Tik pagrindiniame puslapyje) ---
     const slides = document.querySelectorAll('.hero-slide');
     if (slides.length > 0) {
         let currentSlide = 0;
@@ -63,13 +54,27 @@ document.addEventListener('DOMContentLoaded', () => {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
-        }, 5000); // Keičiasi kas 5 sekundes
+        }, 5000);
     }
 
-    // --- 6. LIGHTBOX (Nuotraukų peržiūra) ---
+    const langBtns = document.querySelectorAll('.lang-btn');
+    if (langBtns.length > 0) {
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                langBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const allLangs = document.querySelectorAll('[id^="lang-"]');
+                allLangs.forEach(content => content.style.display = 'none');
+
+                const selectedLang = btn.getAttribute('data-lang');
+                document.getElementById(`lang-${selectedLang}`).style.display = 'block';
+            });
+        });
+    }
+
     const galleryItems = document.querySelectorAll('.gallery-item img');
     if (galleryItems.length > 0) {
-        // Sukuriame Lightbox HTML dinamiškai
         const lightbox = document.createElement('div');
         lightbox.id = 'lightbox';
         lightbox.innerHTML = `
@@ -81,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         document.body.appendChild(lightbox);
 
-        // Elementų pasirinkimas
         const lbImg = lightbox.querySelector('img');
         const lbCounter = lightbox.querySelector('.lb-counter');
         const lbClose = lightbox.querySelector('.lb-close');
@@ -90,22 +94,19 @@ document.addEventListener('DOMContentLoaded', () => {
         
         let currentIndex = 0;
 
-        // Atidarymo funkcija
         const openLightbox = (index) => {
             currentIndex = index;
             lbImg.src = galleryItems[currentIndex].src;
             lbCounter.innerText = `${currentIndex + 1} / ${galleryItems.length}`;
             lightbox.classList.add('active');
-            body.style.overflow = 'hidden'; // Sustabdo puslapio scrollinimą
+            body.style.overflow = 'hidden';
         };
 
-        // Uždarymo funkcija
         const closeLightbox = () => {
             lightbox.classList.remove('active');
             body.style.overflow = 'auto';
         };
 
-        // Kitas / Ankstesnis
         const showNext = (e) => {
             if(e) e.stopPropagation();
             currentIndex = (currentIndex + 1) % galleryItems.length;
@@ -118,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
             openLightbox(currentIndex);
         };
 
-        // Event Listeners (Paspaudimai)
         galleryItems.forEach((img, index) => {
             img.parentElement.addEventListener('click', () => openLightbox(index));
         });
@@ -127,12 +127,10 @@ document.addEventListener('DOMContentLoaded', () => {
         btnNext.addEventListener('click', showNext);
         btnPrev.addEventListener('click', showPrev);
 
-        // Uždaryti paspaudus bet kur fone
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) closeLightbox();
         });
 
-        // Klaviatūros valdymas (ESC, Rodyklės)
         document.addEventListener('keydown', (e) => {
             if (!lightbox.classList.contains('active')) return;
             if (e.key === 'Escape') closeLightbox();
@@ -140,15 +138,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'ArrowLeft') showPrev();
         });
 
-        // Swipe (Braukimas pirštu telefonuose)
         let touchStartX = 0;
         let touchEndX = 0;
         
         lightbox.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX, {passive: true});
         lightbox.addEventListener('touchend', e => {
             touchEndX = e.changedTouches[0].screenX;
-            if (touchStartX - touchEndX > 50) showNext(); // Braukta į kairę
-            if (touchEndX - touchStartX > 50) showPrev(); // Braukta į dešinę
+            if (touchStartX - touchEndX > 50) showNext();
+            if (touchEndX - touchStartX > 50) showPrev();
         }, {passive: true});
     }
 });
