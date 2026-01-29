@@ -50,6 +50,7 @@ img {
     object-fit: cover;
 }
 
+/* PRELOADER */
 #preloader {
     position: fixed;
     top: 0;
@@ -75,6 +76,7 @@ img {
 
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
+/* HEADER */
 header {
     position: fixed;
     top: 0;
@@ -120,6 +122,7 @@ body.nav-active .burger div:nth-child(1) { transform: rotate(-45deg) translate(-
 body.nav-active .burger div:nth-child(2) { opacity: 0; }
 body.nav-active .burger div:nth-child(3) { transform: rotate(45deg) translate(-6px, -7px); }
 
+/* MENU */
 .nav-menu {
     position: fixed;
     top: 0;
@@ -151,6 +154,7 @@ body.nav-active .nav-menu {
     transform: scale(1.05);
 }
 
+/* HERO SECTION */
 .hero {
     height: 100vh;
     width: 100%;
@@ -191,7 +195,6 @@ body.nav-active .nav-menu {
     font-size: 4.5rem;
     margin-bottom: 15px;
     font-weight: 500;
-    color: #ffffff;
 }
 
 .hero-content p {
@@ -199,9 +202,9 @@ body.nav-active .nav-menu {
     letter-spacing: 4px;
     text-transform: uppercase;
     font-weight: 300;
-    color: #ffffff;
 }
 
+/* LAYOUT */
 .container {
     max-width: 1280px;
     margin: 0 auto;
@@ -224,6 +227,7 @@ body.nav-active .nav-menu {
     color: #444;
 }
 
+/* ALBUM GRID */
 .album-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -287,6 +291,7 @@ body.nav-active .nav-menu {
     transform: translateY(0);
 }
 
+/* GALLERY GRID */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -318,6 +323,7 @@ body.nav-active .nav-menu {
     filter: brightness(0.98);
 }
 
+/* LIGHTBOX */
 #lightbox {
     position: fixed;
     top: 0;
@@ -385,39 +391,7 @@ body.nav-active .nav-menu {
     font-size: 1.1rem;
 }
 
-.contact-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    font-size: 1.3rem;
-    color: #444;
-}
-
-.contact-item {
-    text-align: center;
-}
-
-.contact-item span {
-    display: block;
-    font-size: 0.9rem;
-    color: #999;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-}
-
-.contact-item a {
-    border-bottom: 1px solid transparent;
-    transition: 0.3s;
-    color: #222;
-}
-
-.contact-item a:hover {
-    color: var(--accent-color);
-    border-color: var(--accent-color);
-}
-
+/* SERVICES */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -483,6 +457,73 @@ body.nav-active .nav-menu {
     font-family: var(--font-heading);
 }
 
+/* CONTACTS */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    font-size: 1.3rem;
+    color: #444;
+}
+
+.contact-item {
+    text-align: center;
+}
+
+.contact-item span {
+    display: block;
+    font-size: 0.9rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.contact-item a {
+    border-bottom: 1px solid transparent;
+    transition: 0.3s;
+    color: #222;
+}
+
+.contact-item a:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+/* LANGUAGE SWITCHER */
+.lang-switcher {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 0 10px;
+    color: #999;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.lang-btn:hover, .lang-btn.active {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+[id^="lang-"] {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+#lang-lt {
+    display: block;
+}
+
 .back-btn-dark {
     display: inline-block;
     padding: 12px 30px;
@@ -501,6 +542,7 @@ body.nav-active .nav-menu {
     color: #fff;
 }
 
+/* MEDIA QUERIES */
 @media (max-width: 1024px) {
     .container { padding: 100px 25px; }
     .hero-content h1 { font-size: 3.5rem; }
@@ -527,14 +569,19 @@ body.nav-active .nav-menu {
         gap: 20px;
     }
     
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    .service-card {
+        padding: 30px;
+    }
+    
     .lb-btn { font-size: 2.5rem; padding: 10px; }
     .lb-prev { left: 10px; } .lb-next { right: 10px; }
     .lb-close { right: 20px; top: 20px; }
     .lb-counter { left: 20px; top: 20px; font-size: 0.9rem; }
     
     .container { padding: 100px 20px; }
-    .services-grid { grid-template-columns: 1fr; }
-    .service-card { padding: 30px; }
 }
 
 @media (max-width: 480px) {
