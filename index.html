@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>DP.PORTFOLIO</title>
-    <meta name="description" content="DP.PORTFOLIO – Minimalizmas, erdvė, šviesa ir emocija. Profesionalus fotografas Dominik Šuškevič. Dirbu Kaune ir Švenčionėliuose.">
-    <meta name="keywords" content="Dominikphotofficial, DP, portfolio, Dominik Šuškevič, fotografas Kaune, fotografas Švenčionėliuose, gamta, short film, meninė fotografija, Lietuva">
+    <title>DP.PORTFOLIO | Dominik Šuškevič</title>
+    <meta name="description" content="DP.PORTFOLIO – Minimalizmas, erdvė, šviesa ir emocija. Profesionalus fotografas Dominik Šuškevič. Kaunas / Švenčionėliai.">
+    <meta name="keywords" content="Dominikphotofficial, DP, portfolio, Dominik Šuškevič, fotografas, Lietuva, Vilnius, Kaunas, Švenčionėliai, gamta, minimalizmas">
     <meta name="author" content="Dominik Šuškevič, Dominikphotofficial">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://portfolio.dominikphotofficial.lt/">
@@ -15,8 +15,7 @@
     <meta property="og:description" content="Erdvė. Šviesa. Emocija. Pamatykite pasaulį per mano objektyvą.">
     <meta property="og:image" content="https://i.postimg.cc/4NqyTsg1/LATVIJA-2025-33.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="https://iili.io/fjNLbs4.png">
 </head>
@@ -34,12 +33,27 @@
             <div></div>
         </div>
     </header>
+    
     <div class="nav-menu">
-        <a href="index.html">Darbai</a>
-        <a href="services.html">Paslaugos</a>
-        <a href="about.html">Apie</a>
-        <a href="contacts.html">Kontaktai</a>
+        <div class="nav-item">
+            <a href="index.html" class="nav-link">Darbai</a>
+        </div>
+        <div class="nav-item">
+            <a href="about.html" class="nav-link">Apie</a>
+            <span class="dropdown-arrow" data-target="submenu-about">▼</span>
+            <div id="submenu-about" class="submenu">
+                <a href="biography.html">Biografija</a>
+            </div>
+        </div>
+        <div class="nav-item">
+            <a href="contacts.html" class="nav-link">Kontaktai</a>
+            <span class="dropdown-arrow" data-target="submenu-contacts">▼</span>
+            <div id="submenu-contacts" class="submenu">
+                <a href="services.html">Paslaugos</a>
+            </div>
+        </div>
     </div>
+
     <section class="hero">
         <div class="hero-slider">
             <div class="hero-slide active" style="background-image: url('https://i.postimg.cc/4NqyTsg1/LATVIJA-2025-33.jpg');"></div>
@@ -51,11 +65,12 @@
             <p>Erdvė. Šviesa. Emocija.</p>
         </div>
     </section>
+
     <section class="container">
         <h2 class="section-title">Albumai</h2>
         <div class="album-grid">
             <a href="albums/rundale.html" class="album-card">
-                <img src="https://i.postimg.cc/SNJR5jwY/IMG-5630.jpg" alt="Rundāle Palace" loading="lazy">
+                <img src="https://i.postimg.cc/4NqyTsg1/LATVIJA-2025-33.jpg" alt="Rundāle Palace" loading="lazy">
                 <div class="album-overlay"><span class="album-title">Rundāle Palace</span></div>
             </a>
             <a href="albums/noka.html" class="album-card">
@@ -79,8 +94,8 @@
                 <div class="album-overlay"><span class="album-title">Cirkliškis</span></div>
             </a>
             <a href="albums/sirvetos-parkas.html" class="album-card">
-                <img src="https://i.postimg.cc/X7gd6GTN/srp-01.jpg" alt="Sirvėtos regioninis parkas" loading="lazy">
-                <div class="album-overlay"><span class="album-title">Sirvėtos parkas</span></div>
+                <img src="https://i.postimg.cc/X7gd6GTN/srp-01.jpg" alt="Sirvėtos parkas" loading="lazy">
+                <div class="album-overlay"><span class="album-title">Sirvėtos regioninis parkas</span></div>
             </a>
             <a href="albums/sventa.html" class="album-card">
                 <img src="https://i.postimg.cc/QM6Nbm4p/venta-0.jpg" alt="Šventa" loading="lazy">
