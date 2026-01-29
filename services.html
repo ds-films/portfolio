@@ -25,7 +25,7 @@
     <header>
         <div class="logo">
             <a href="index.html">
-                <img src="https://iili.io/fjNLbs4.png" alt="DP Logo">
+                <img src="https://iili.io/fjNLbs4.png" alt="DP.PORTFOLIO Logo">
             </a>
         </div>
         <div class="burger">
@@ -35,39 +35,52 @@
         </div>
     </header>
     <div class="nav-menu">
-        <a href="index.html">Darbai</a>
-        <a href="services.html">Paslaugos</a>
-        <a href="about.html">Apie</a>
-        <a href="contacts.html">Kontaktai</a>
+        <div class="nav-item">
+            <a href="index.html" class="nav-link">Darbai</a>
+        </div>
+        <div class="nav-item">
+            <a href="about.html" class="nav-link">Apie</a>
+            <span class="dropdown-arrow" data-target="submenu-about">▼</span>
+            <div id="submenu-about" class="submenu">
+                <a href="biography.html">Biografija</a>
+            </div>
+        </div>
+        <div class="nav-item">
+            <a href="contacts.html" class="nav-link">Kontaktai</a>
+            <span class="dropdown-arrow" data-target="submenu-contacts">▼</span>
+            <div id="submenu-contacts" class="submenu">
+                <a href="services.html">Paslaugos</a>
+            </div>
+        </div>
     </div>
     <section class="container" style="padding-top: 140px;">
-        <h1 class="section-title">Paslaugos ir Įranga</h1>
+        <h1 class="section-title">Kūrybos Kryptys</h1>
         <div class="services-grid">
             <div class="service-card">
                 <div>
                     <h3 class="service-title">Retro Fotografija</h3>
                     <p class="service-desc">
-                        Nostalgiškas ir autentiškas vaizdas, išgaunamas su legendine <strong>Canon PowerShot S5 IS</strong> kamera. Šis stilius skirtas tiems, kurie vertina „netobulą tobulumą“, grūdėtumą ir juostinės fotografijos estetiką. Puikiai tinka portretams ir atmosferinėms fotosesijoms.
+                        Nostalgiškas ir autentiškas vaizdas, sukurtas naudojant legendinę <strong>Canon PowerShot S5 IS</strong> kamerą. Šis stilius skirtas tiems, kurie ieško nuotraukų su charakteriu – „gyvų“, netobulai tobulų, primenančių senąją juostinę fotografiją. Tai unikalus braižas ieškantiems išskirtinumo.
                     </p>
                 </div>
-                <span class="service-tag">Vintažas</span>
+                <span class="service-tag">Vintažinis Stilius</span>
             </div>
             <div class="service-card">
                 <div>
                     <h3 class="service-title">Cinematic Video</h3>
                     <p class="service-desc">
-                        Kuriu atmosferinius, lėtus ir gilius vaizdo pasakojimus, skirtus prisiminimams arba <strong>YouTube</strong> platformai. Naudoju <strong>iPhone 15</strong> Cinematic režimą, kad užfiksuočiau natūralų lauko gylį, šviesą ir emociją. Tai ne „TikTok“ turinys – tai maži filmai.
+                        Atmosferiniai vaizdo pasakojimai <strong>YouTube</strong> platformai ir asmeniniams archyvams. Tai ne trumpi vaizdo įrašai, o lėti, įtraukiantys filmai apie gamtą, keliones ir prisiminimus. Naudoju mobiliąsias technologijas (cinematic mode), kad užfiksuočiau tikrąją akimirkos emociją, erdvę ir natūralumą.
                     </p>
                 </div>
                 <span class="service-tag">Storytelling</span>
             </div>
         </div>
         <div class="location-banner">
-            <span style="display: block; font-size: 0.9rem; color: #999; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 2px;">Veiklos Vieta</span>
+            <span class="location-label">Lokacija</span>
             <p class="location-text">Dirbu Kaune ir Švenčionėliuose</p>
         </div>
         <div style="text-align: center; margin-top: 50px;">
-            <a href="contacts.html" class="back-btn-dark" style="color: #222; border-color: #222;">Susisiekti</a>
+            <a href="contacts.html" class="back-btn-dark" style="color: #222; border-color: #222;">Susisiekti dėl bendradarbiavimo</a>
         </div>
     </section>
     <script src="script.js"></script>
