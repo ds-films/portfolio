@@ -1,41 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // PRELOADER
     const preloader = document.getElementById('preloader');
     if(preloader) {
         window.addEventListener('load', () => {
             preloader.style.opacity = '0';
             setTimeout(() => { preloader.style.display = 'none'; }, 400);
         });
-        setTimeout(() => { if(preloader.style.display !== 'none') { preloader.style.opacity = '0'; setTimeout(() => preloader.style.display='none', 400); }}, 2000);
+        setTimeout(() => { 
+            if(preloader.style.display !== 'none') {
+                preloader.style.opacity = '0';
+                setTimeout(() => { preloader.style.display = 'none'; }, 400);
+            }
+        }, 1500);
     }
 
-    // MENU
     const burger = document.querySelector('.burger');
     const body = document.body;
     if (burger) {
         burger.addEventListener('click', () => {
             body.classList.toggle('nav-active');
         }, {passive: true});
-        document.querySelectorAll('.nav-link').forEach(link => link.addEventListener('click', () => body.classList.remove('nav-active')));
+        document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', () => body.classList.remove('nav-active')));
     }
 
-    // SCROLL ANIMATIONS (Reveal)
-    const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                entry.target.classList.add('visible'); 
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    const animateElements = document.querySelectorAll('.album-card, .service-card, .bio-block, .gallery-item, .reveal, .info-card, .form-card');
-    animateElements.forEach(el => observer.observe(el));
-
-    // HEADER
     const header = document.querySelector('header');
     if (header) {
         window.addEventListener('scroll', () => {
@@ -43,7 +30,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }, {passive: true});
     }
 
-    // HERO SLIDER
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.gallery-item, .album-card, .service-card, .bio-block').forEach(item => {
+        item.classList.add('visible-target'); 
+        observer.observe(item);
+    });
+
     const slides = document.querySelectorAll('.hero-slide');
     if (slides.length > 0) {
         let current = 0;
@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
     }
 
-    // LIGHTBOX
     const galleryItems = document.querySelectorAll('.gallery-item img');
     if (galleryItems.length > 0) {
         const lb = document.createElement('div');
@@ -62,15 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
         lb.innerHTML = '<div class="lb-close">&times;</div><div class="lb-counter"></div><button class="lb-btn lb-prev">&#10094;</button><img src="" alt="View"><button class="lb-btn lb-next">&#10095;</button>';
         document.body.appendChild(lb);
 
-        const lbImg = lb.querySelector('img'), lbCount = lb.querySelector('.lb-counter');
+        const img = lb.querySelector('img'), cnt = lb.querySelector('.lb-counter');
         let idx = 0;
 
         const update = () => {
-            lbImg.style.opacity = 0;
+            img.style.opacity = 0;
             setTimeout(() => {
-                lbImg.src = galleryItems[idx].src;
-                lbCount.textContent = `${idx + 1} / ${galleryItems.length}`;
-                lbImg.onload = () => lbImg.style.opacity = 1;
+                img.src = galleryItems[idx].src;
+                cnt.textContent = `${idx + 1} / ${galleryItems.length}`;
+                img.onload = () => img.style.opacity = 1;
             }, 150);
         };
 
