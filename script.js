@@ -1,29 +1,41 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // Greitas preloaderio išjungimas
+    // PRELOADER
     const preloader = document.getElementById('preloader');
     if(preloader) {
-        const removeLoader = () => {
+        window.addEventListener('load', () => {
             preloader.style.opacity = '0';
-            setTimeout(() => { preloader.style.display = 'none'; }, 300);
-        };
-        window.addEventListener('load', removeLoader);
-        setTimeout(removeLoader, 1500); // Apsauga
+            setTimeout(() => { preloader.style.display = 'none'; }, 400);
+        });
+        setTimeout(() => { if(preloader.style.display !== 'none') { preloader.style.opacity = '0'; setTimeout(() => preloader.style.display='none', 400); }}, 2000);
     }
 
-    // Burger Meniu
+    // MENU
     const burger = document.querySelector('.burger');
     const body = document.body;
     if (burger) {
         burger.addEventListener('click', () => {
             body.classList.toggle('nav-active');
         }, {passive: true});
-        document.querySelectorAll('.nav-link').forEach(l => 
-            l.addEventListener('click', () => body.classList.remove('nav-active'))
-        );
+        document.querySelectorAll('.nav-link').forEach(link => link.addEventListener('click', () => body.classList.remove('nav-active')));
     }
 
-    // Header efektas
+    // SCROLL ANIMATIONS (Reveal)
+    const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                entry.target.classList.add('visible'); 
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    const animateElements = document.querySelectorAll('.album-card, .service-card, .bio-block, .gallery-item, .reveal, .info-card, .form-card');
+    animateElements.forEach(el => observer.observe(el));
+
+    // HEADER
     const header = document.querySelector('header');
     if (header) {
         window.addEventListener('scroll', () => {
@@ -31,28 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, {passive: true});
     }
 
-    // Atsiradimo animacija (Observer)
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
-                obs.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    // Pritaiko animaciją tik jei JS veikia
-    document.querySelectorAll('.album-card, .service-card, .bio-block, .gallery-item').forEach(item => {
-        // Tik jei JS užsikrovė, paslepiam elementus ir leidžiam animaciją
-        // (CSS pagal nutylėjimą gallery-item dabar rodoma)
-        item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        item.style.opacity = 0;
-        item.style.transform = 'translateY(20px)';
-        observer.observe(item);
-    });
-
-    // Hero Slaideris
+    // HERO SLIDER
     const slides = document.querySelectorAll('.hero-slide');
     if (slides.length > 0) {
         let current = 0;
@@ -63,40 +54,48 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
     }
 
-    // Lightbox Galerija
+    // LIGHTBOX
     const galleryItems = document.querySelectorAll('.gallery-item img');
     if (galleryItems.length > 0) {
         const lb = document.createElement('div');
         lb.id = 'lightbox';
-        lb.innerHTML = '<div class="lb-close">&times;</div><div class="lb-counter"></div><button class="lb-btn lb-prev">&#10094;</button><img src="" alt="Peržiūra"><button class="lb-btn lb-next">&#10095;</button>';
+        lb.innerHTML = '<div class="lb-close">&times;</div><div class="lb-counter"></div><button class="lb-btn lb-prev">&#10094;</button><img src="" alt="View"><button class="lb-btn lb-next">&#10095;</button>';
         document.body.appendChild(lb);
 
-        const img = lb.querySelector('img'), cnt = lb.querySelector('.lb-counter');
+        const lbImg = lb.querySelector('img'), lbCount = lb.querySelector('.lb-counter');
         let idx = 0;
 
-        const show = (i) => {
-            idx = (i + galleryItems.length) % galleryItems.length;
-            img.src = galleryItems[idx].src;
-            cnt.textContent = `${idx + 1} / ${galleryItems.length}`;
-            lb.classList.add('active');
-            body.style.overflow = 'hidden';
+        const update = () => {
+            lbImg.style.opacity = 0;
+            setTimeout(() => {
+                lbImg.src = galleryItems[idx].src;
+                lbCount.textContent = `${idx + 1} / ${galleryItems.length}`;
+                lbImg.onload = () => lbImg.style.opacity = 1;
+            }, 150);
         };
 
-        const hide = () => { lb.classList.remove('active'); body.style.overflow = ''; };
-        
+        const show = (i) => { idx = i; update(); lb.classList.add('active'); body.style.overflow = 'hidden'; };
+        const close = () => { lb.classList.remove('active'); body.style.overflow = ''; };
+        const next = (e) => { e?.stopPropagation(); idx = (idx + 1) % galleryItems.length; update(); };
+        const prev = (e) => { e?.stopPropagation(); idx = (idx - 1 + galleryItems.length) % galleryItems.length; update(); };
+
         galleryItems.forEach((el, i) => el.parentNode.addEventListener('click', () => show(i)));
+        lb.querySelector('.lb-close').onclick = close;
+        lb.querySelector('.lb-next').onclick = next;
+        lb.querySelector('.lb-prev').onclick = prev;
+        lb.onclick = (e) => { if(e.target === lb) close(); };
+        document.addEventListener('keydown', (e) => {
+            if (!lb.classList.contains('active')) return;
+            if (e.key === 'Escape') close();
+            if (e.key === 'ArrowRight') next();
+            if (e.key === 'ArrowLeft') prev();
+        });
         
-        lb.querySelector('.lb-close').onclick = hide;
-        lb.querySelector('.lb-prev').onclick = (e) => { e.stopPropagation(); show(idx - 1); };
-        lb.querySelector('.lb-next').onclick = (e) => { e.stopPropagation(); show(idx + 1); };
-        lb.onclick = (e) => { if(e.target === lb) hide(); };
-        
-        // Touch
-        let x = 0;
-        lb.addEventListener('touchstart', e => x = e.touches[0].clientX, {passive: true});
+        let tx = 0;
+        lb.addEventListener('touchstart', e => tx = e.touches[0].clientX, {passive: true});
         lb.addEventListener('touchend', e => {
-            if(x - e.changedTouches[0].clientX > 50) show(idx + 1);
-            if(e.changedTouches[0].clientX - x > 50) show(idx - 1);
+            if (tx - e.changedTouches[0].clientX > 50) next();
+            if (e.changedTouches[0].clientX - tx > 50) prev();
         }, {passive: true});
     }
 });
