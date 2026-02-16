@@ -4,15 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kontaktai | DP.PORTFOLIO</title>
-    <meta name="description" content="Susisiekite su Dominik Šuškevič (DP.PORTFOLIO). Bendradarbiavimas Kaune ir Švenčionėliuose.">
-    <meta name="keywords" content="Dominik Šuškevič, kontaktai, email, telefonas, užsakymai, Kaunas, Švenčionėliai, fotografijos paslaugos">
+    <meta name="description" content="Susisiekite su Dominik Šuškevič (DP.PORTFOLIO). Užpildykite formą ir užsisakykite fotosesiją.">
+    <meta name="keywords" content="Dominik Šuškevič, kontaktai, užklausa, forma, fotografija Kaunas, videografas">
     <meta name="author" content="Dominik Šuškevič, Dominikphotofficial">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://portfolio.dominikphotofficial.lt/contacts.html">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://portfolio.dominikphotofficial.lt/contacts.html">
-    <meta property="og:title" content="Susisiekite | DP.PORTFOLIO">
-    <meta property="og:image" content="https://iili.io/fjNLbs4.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
@@ -23,41 +19,75 @@
     <div id="preloader"><div class="loader"></div></div>
     <header>
         <div class="logo">
-            <a href="index.html">
-                <img src="https://iili.io/fjNLbs4.png" alt="DP Logo">
-            </a>
+            <a href="index.html"><img src="https://iili.io/fjNLbs4.png" alt="DP Logo"></a>
         </div>
         <div class="burger">
-            <div></div>
-            <div></div>
-            <div></div>
+            <div></div><div></div><div></div>
         </div>
     </header>
     <div class="nav-menu">
-        <a href="index.html">Darbai</a>
-        <a href="services.html">Paslaugos</a>
-        <a href="about.html">Apie</a>
-        <a href="contacts.html">Kontaktai</a>
+        <a href="index.html" class="nav-link">Darbai</a>
+        <a href="services.html" class="nav-link">Paslaugos</a>
+        <a href="about.html" class="nav-link">Apie</a>
+        <a href="contacts.html" class="nav-link">Kontaktai</a>
     </div>
-    <section class="container" style="min-height: 80vh; display: flex; flex-direction: column; justify-content: center;">
-        <h1 class="section-title">Susisiekime</h1>
-        <div class="info-card">
-            <div class="info-group">
-                <span class="info-label">El. paštas</span>
-                <a href="mailto:Dominikphotofficial.lt@gmail.com" class="info-value">Dominikphotofficial.lt@gmail.com</a>
+    
+    <section class="container" style="min-height: 80vh; padding-top: 140px;">
+        <h1 class="section-title reveal">Susisiekime</h1>
+        
+        <div class="contact-grid">
+            <div class="info-card reveal">
+                <div class="info-group">
+                    <span class="info-label">El. paštas</span>
+                    <a href="mailto:Dominikphotofficial.lt@gmail.com" class="info-value">Dominikphotofficial.lt@gmail.com</a>
+                </div>
+                <div class="divider"></div>
+                <div class="info-group">
+                    <span class="info-label">Telefonas</span>
+                    <a href="tel:+37062337615" class="info-value">+370 623 37615</a>
+                </div>
+                <div class="divider"></div>
+                <div class="info-group">
+                    <span class="info-label">Lokacija</span>
+                    <span class="info-value">Kaunas / Švenčionėliai</span>
+                </div>
             </div>
-            <div class="divider"></div>
-            <div class="info-group">
-                <span class="info-label">Telefonas</span>
-                <a href="tel:+37062337615" class="info-value">+370 623 37615</a>
-            </div>
-            <div class="divider"></div>
-            <div class="info-group">
-                <span class="info-label">Lokacija</span>
-                <span class="info-value">Kaunas / Švenčionėliai</span>
-            </div>
-            <div style="margin-top: 50px;">
-                <a href="services.html" class="back-btn-dark" style="color: #222; border-color: #eee;">Mano Paslaugos</a>
+
+            <div class="form-card reveal">
+                <h3 style="margin-bottom: 25px; font-family: 'Jost'; text-transform: uppercase;">Užklausos Forma</h3>
+                <form action="https://formspree.io/f/mgvnbvaw" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Vardas Pavardė</label>
+                        <input type="text" id="name" name="name" required placeholder="Jūsų vardas">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">El. paštas</label>
+                        <input type="email" id="email" name="email" required placeholder="pavyzdys@el.pastas">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Telefonas</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+370...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="style">Dominantis Stilius / Paslauga</label>
+                        <select id="style" name="style">
+                            <option value="Retro Foto (Canon S5)">Retro Fotografija</option>
+                            <option value="Cinematic Video">Cinematic Video (YouTube)</option>
+                            <option value="Asmeninė Fotosesija">Asmeninė Fotosesija</option>
+                            <option value="Kita">Kitas projektas</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Papildoma informacija</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Papasakokite apie savo idėją..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Siųsti Užklausą</button>
+                </form>
             </div>
         </div>
     </section>
