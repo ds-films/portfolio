@@ -21,9 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             body.classList.toggle('nav-active');
         }, {passive: true});
         document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                body.classList.remove('nav-active');
-            });
+            link.addEventListener('click', () => body.classList.remove('nav-active'));
         });
     }
 
@@ -38,21 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
                 obs.unobserve(entry.target);
             }
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.gallery-item, .album-card, .service-card, .bio-block').forEach(item => {
-        item.style.opacity = 0; 
+    document.querySelectorAll('.gallery-item, .album-card, .service-card, .bio-block, .info-card, .form-card').forEach(item => {
+        item.style.opacity = 0;
         item.style.transform = 'translateY(20px)';
+        item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(item);
     });
-    
-    // Papildoma CSS taisyklė per JS animacijai, kad CSS faile liktų švariau
-    const styleSheet = document.createElement("style");
-    styleSheet.innerText = ".visible { opacity: 1 !important; transform: translateY(0) !important; }";
-    document.head.appendChild(styleSheet);
 
     const slides = document.querySelectorAll('.hero-slide');
     if (slides.length > 0) {
@@ -68,19 +64,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (galleryItems.length > 0) {
         const lb = document.createElement('div');
         lb.id = 'lightbox';
-        lb.innerHTML = '<div class="lb-close">&times;</div><div class="lb-counter"></div><button class="lb-btn lb-prev">&#10094;</button><img src="" alt="Peržiūra"><button class="lb-btn lb-next">&#10095;</button>';
+        lb.innerHTML = '<div class="lb-close">&times;</div><div class="lb-counter"></div><button class="lb-btn lb-prev">&#10094;</button><img src="" alt="View"><button class="lb-btn lb-next">&#10095;</button>';
         document.body.appendChild(lb);
 
-        const lbImg = lb.querySelector('img');
-        const lbCount = lb.querySelector('.lb-counter');
+        const img = lb.querySelector('img'), cnt = lb.querySelector('.lb-counter');
         let idx = 0;
 
         const update = () => {
-            lbImg.style.opacity = 0;
+            img.style.opacity = 0;
             setTimeout(() => {
-                lbImg.src = galleryItems[idx].src;
-                lbCount.textContent = `${idx + 1} / ${galleryItems.length}`;
-                lbImg.onload = () => lbImg.style.opacity = 1;
+                img.src = galleryItems[idx].src;
+                cnt.textContent = `${idx + 1} / ${galleryItems.length}`;
+                img.onload = () => img.style.opacity = 1;
             }, 150);
         };
 
