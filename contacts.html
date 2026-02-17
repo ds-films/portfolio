@@ -4,26 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kontaktai | DP.PORTFOLIO</title>
-    <meta name="description" content="Susisiekite su Dominik Šuškevič (DP.PORTFOLIO). Užpildykite formą ir užsisakykite fotosesiją.">
-    <meta name="keywords" content="Dominik Šuškevič, kontaktai, užklausa, forma, fotografija Kaunas, videografas">
-    <meta name="author" content="Dominik Šuškevič, Dominikphotofficial">
+    <meta name="description" content="Susisiekite su Dominik Šuškevič. Užpildykite formą arba rašykite tiesiogiai.">
+    <meta name="keywords" content="kontaktai, fotografas, uzklausa, forma, Kaunas, Švenčionėliai">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://portfolio.dominikphotofficial.lt/contacts.html">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="https://iili.io/fjNLbs4.png">
 </head>
 <body>
     <div id="preloader"><div class="loader"></div></div>
     <header>
-        <div class="logo">
-            <a href="index.html"><img src="https://iili.io/fjNLbs4.png" alt="DP Logo"></a>
-        </div>
-        <div class="burger">
-            <div></div><div></div><div></div>
-        </div>
+        <div class="logo"><a href="index.html"><img src="https://iili.io/fjNLbs4.png" alt="DP Logo"></a></div>
+        <div class="burger"><div></div><div></div><div></div></div>
     </header>
     <div class="nav-menu">
         <a href="index.html" class="nav-link">Darbai</a>
@@ -32,14 +24,15 @@
         <a href="contacts.html" class="nav-link">Kontaktai</a>
     </div>
     
-    <section class="container" style="min-height: 80vh; padding-top: 140px;">
-        <h1 class="section-title reveal">Susisiekime</h1>
+    <section class="container" style="padding-top: 140px;">
+        <h1 class="section-title">Susisiekime</h1>
         
         <div class="contact-grid">
-            <div class="info-card reveal">
+            <!-- Informacija -->
+            <div class="info-card">
                 <div class="info-group">
                     <span class="info-label">El. paštas</span>
-                    <a href="mailto:Dominikphotofficial.lt@gmail.com" class="info-value">Dominikphotofficial.lt@gmail.com</a>
+                    <a href="mailto:Dominikphotofficial.lt@gmail.com" class="info-value" style="font-size: 1.2rem;">Dominikphotofficial.lt@gmail.com</a>
                 </div>
                 <div class="divider"></div>
                 <div class="info-group">
@@ -53,40 +46,32 @@
                 </div>
             </div>
 
-            <div class="form-card reveal">
+            <!-- Forma -->
+            <div class="form-card">
                 <h3 style="margin-bottom: 25px; font-family: 'Jost'; text-transform: uppercase;">Užklausos Forma</h3>
                 <form action="https://formspree.io/f/mgvnbvaw" method="POST" class="contact-form">
                     <div class="form-group">
-                        <label for="name">Vardas Pavardė</label>
+                        <label for="name">Vardas</label>
                         <input type="text" id="name" name="name" required placeholder="Jūsų vardas">
                     </div>
-
                     <div class="form-group">
                         <label for="email">El. paštas</label>
-                        <input type="email" id="email" name="email" required placeholder="pavyzdys@el.pastas">
+                        <input type="email" id="email" name="email" required placeholder="Jūsų el. paštas">
                     </div>
-
                     <div class="form-group">
-                        <label for="phone">Telefonas</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+370...">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="style">Dominantis Stilius / Paslauga</label>
+                        <label for="style">Paslauga</label>
                         <select id="style" name="style">
-                            <option value="Retro Foto (Canon S5)">Retro Fotografija</option>
-                            <option value="Cinematic Video">Cinematic Video (YouTube)</option>
-                            <option value="Asmeninė Fotosesija">Asmeninė Fotosesija</option>
+                            <option value="Retro Foto">Retro Fotografija</option>
+                            <option value="Cinematic Video">Cinematic Video</option>
+                            <option value="Fotosesija">Asmeninė Fotosesija</option>
                             <option value="Kita">Kitas projektas</option>
                         </select>
                     </div>
-
                     <div class="form-group">
-                        <label for="message">Papildoma informacija</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Papasakokite apie savo idėją..."></textarea>
+                        <label for="message">Žinutė</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Aprašykite savo idėją..."></textarea>
                     </div>
-
-                    <button type="submit" class="submit-btn">Siųsti Užklausą</button>
+                    <button type="submit" class="submit-btn">Siųsti</button>
                 </form>
             </div>
         </div>
