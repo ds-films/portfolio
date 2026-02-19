@@ -4,12 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if(preloader) {
         window.addEventListener('load', () => {
             preloader.style.opacity = '0';
-            setTimeout(() => { preloader.style.display = 'none'; }, 400);
+            setTimeout(() => { preloader.style.display = 'none'; }, 500);
         });
         setTimeout(() => { 
             if(preloader.style.display !== 'none') {
                 preloader.style.opacity = '0';
-                setTimeout(() => { preloader.style.display = 'none'; }, 400);
+                setTimeout(() => { preloader.style.display = 'none'; }, 500);
             }
         }, 1500);
     }
@@ -20,9 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         burger.addEventListener('click', () => {
             body.classList.toggle('nav-active');
         }, {passive: true});
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => body.classList.remove('nav-active'));
-        });
+        document.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', () => body.classList.remove('nav-active')));
     }
 
     const header = document.querySelector('header');
@@ -43,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.gallery-item, .album-card, .service-card, .bio-block, .info-card, .form-card').forEach(item => {
+    document.querySelectorAll('.gallery-item, .album-card, .service-card, .info-card, .form-card').forEach(item => {
         item.style.opacity = 0;
         item.style.transform = 'translateY(20px)';
         item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -67,16 +65,17 @@ document.addEventListener('DOMContentLoaded', () => {
         lb.innerHTML = '<div class="lb-close">&times;</div><div class="lb-counter"></div><button class="lb-btn lb-prev">&#10094;</button><img src="" alt="View"><button class="lb-btn lb-next">&#10095;</button>';
         document.body.appendChild(lb);
 
-        const img = lb.querySelector('img'), cnt = lb.querySelector('.lb-counter');
+        const lbImg = lb.querySelector('img');
+        const lbCount = lb.querySelector('.lb-counter');
         let idx = 0;
 
         const update = () => {
-            img.style.opacity = 0;
+            lbImg.style.opacity = 0;
             setTimeout(() => {
-                img.src = galleryItems[idx].src;
-                cnt.textContent = `${idx + 1} / ${galleryItems.length}`;
-                img.onload = () => img.style.opacity = 1;
-            }, 150);
+                lbImg.src = galleryItems[idx].src;
+                lbCount.textContent = `${idx + 1} / ${galleryItems.length}`;
+                lbImg.onload = () => lbImg.style.opacity = 1;
+            }, 100);
         };
 
         const show = (i) => { idx = i; update(); lb.classList.add('active'); body.style.overflow = 'hidden'; };
@@ -85,12 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const prev = (e) => { e?.stopPropagation(); idx = (idx - 1 + galleryItems.length) % galleryItems.length; update(); };
 
         galleryItems.forEach((el, i) => el.parentNode.addEventListener('click', () => show(i)));
-        
         lb.querySelector('.lb-close').onclick = close;
         lb.querySelector('.lb-next').onclick = next;
         lb.querySelector('.lb-prev').onclick = prev;
         lb.onclick = (e) => { if(e.target === lb) close(); };
-        
         document.addEventListener('keydown', (e) => {
             if (!lb.classList.contains('active')) return;
             if (e.key === 'Escape') close();
