@@ -3,79 +3,180 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://portfolio.dominikphotofficial.lt/</loc>
-        <lastmod>2026-02-02</lastmod>
+        <lastmod>2026-02-21</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://portfolio.dominikphotofficial.lt/about.html</loc>
-        <lastmod>2026-02-02</lastmod>
-        <priority>0.8</priority>
-        <image:image>
-            <image:loc>https://iili.io/fjNLbs4.png</image:loc>
-            <image:title>Dominik Šuškevič - Apie Mane</image:title>
-        </image:image>
-    </url>
-    <url>
         <loc>https://portfolio.dominikphotofficial.lt/services.html</loc>
-        <lastmod>2026-02-02</lastmod>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://portfolio.dominikphotofficial.lt/contacts.html</loc>
-        <lastmod>2026-02-02</lastmod>
+        <loc>https://portfolio.dominikphotofficial.lt/about.html</loc>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://iili.io/fjNLbs4.png</image:loc>
+            <image:title>Dominik Šuškevič</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://portfolio.dominikphotofficial.lt/biography.html</loc>
+        <lastmod>2026-02-21</lastmod>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://i.postimg.cc/s2TXN7QL/ph-d-s_03.jpg</image:loc>
+            <image:title>Biografija</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://portfolio.dominikphotofficial.lt/contacts.html</loc>
+        <lastmod>2026-02-21</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://portfolio.dominikphotofficial.lt/albums/winter.html</loc>
+        <lastmod>2026-02-21</lastmod>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://i.postimg.cc/GpxC63t7/Winter-album-01.jpg</image:loc>
+            <image:title>WINTER | LITHUANIA</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://portfolio.dominikphotofficial.lt/albums/winter-cirkliskis.html</loc>
+        <lastmod>2026-02-21</lastmod>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://i.postimg.cc/G3SvWg4k/winter-album-cirkliskis-01.jpg</image:loc>
+            <image:title>WINTER | CIRKLIŠKIS</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://portfolio.dominikphotofficial.lt/albums/winter-sventa.html</loc>
+        <lastmod>2026-02-21</lastmod>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://i.postimg.cc/y605WPPP/winter-album-sventa-01.jpg</image:loc>
+            <image:title>WINTER | ŠVENTA</image:title>
+        </image:image>
     </url>
     <url>
         <loc>https://portfolio.dominikphotofficial.lt/albums/rundale.html</loc>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://i.postimg.cc/SNJR5jwY/IMG-5630.jpg</image:loc>
+            <image:title>Rundāle Palace</image:title>
+        </image:image>
     </url>
     <url>
         <loc>https://portfolio.dominikphotofficial.lt/albums/noka.html</loc>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://i.postimg.cc/28SthTZg/noka-car-01.jpg</image:loc>
+            <image:title>NOKA Gathering</image:title>
+        </image:image>
     </url>
     <url>
         <loc>https://portfolio.dominikphotofficial.lt/albums/geles.html</loc>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://i.postimg.cc/Dy2Q1ryc/Flower-01.jpg</image:loc>
+            <image:title>Gėlės</image:title>
+        </image:image>
     </url>
     <url>
         <loc>https://portfolio.dominikphotofficial.lt/albums/baltoji-kiele.html</loc>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://i.postimg.cc/KYbYwNkK/bird-01.jpg</image:loc>
+            <image:title>Baltoji kielė</image:title>
+        </image:image>
     </url>
     <url>
         <loc>https://portfolio.dominikphotofficial.lt/albums/bmw-e36.html</loc>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://i.postimg.cc/vTpSGtSm/BMWE36-01.jpg</image:loc>
+            <image:title>BMW E36</image:title>
+        </image:image>
     </url>
     <url>
         <loc>https://portfolio.dominikphotofficial.lt/albums/cirkliskis.html</loc>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://i.postimg.cc/x8pRF86C/cirkliskis-01.jpg</image:loc>
+            <image:title>Cirkliškis</image:title>
+        </image:image>
     </url>
     <url>
         <loc>https://portfolio.dominikphotofficial.lt/albums/sirvetos-parkas.html</loc>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://i.postimg.cc/X7gd6GTN/srp-01.jpg</image:loc>
+            <image:title>Sirvėtos regioninis parkas</image:title>
+        </image:image>
     </url>
     <url>
         <loc>https://portfolio.dominikphotofficial.lt/albums/sventa.html</loc>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://i.postimg.cc/QM6Nbm4p/venta-0.jpg</image:loc>
+            <image:title>Šventa</image:title>
+        </image:image>
     </url>
     <url>
         <loc>https://portfolio.dominikphotofficial.lt/albums/vdu-sodas.html</loc>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://i.postimg.cc/HL0Fv0Xk/vdu-botanikos-sodas-01.jpg</image:loc>
+            <image:title>VDU Botanikos Sodas</image:title>
+        </image:image>
     </url>
     <url>
         <loc>https://portfolio.dominikphotofficial.lt/albums/moletu-observatorija.html</loc>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://i.postimg.cc/3x3PgfJH/Teleskopas-165-cm.png</image:loc>
+            <image:title>Molėtų observatorija</image:title>
+        </image:image>
     </url>
     <url>
         <loc>https://portfolio.dominikphotofficial.lt/albums/gandras.html</loc>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://i.postimg.cc/KYtMgjLT/Gandras-01.jpg</image:loc>
+            <image:title>Gandras</image:title>
+        </image:image>
     </url>
     <url>
         <loc>https://portfolio.dominikphotofficial.lt/albums/petrausku-namai.html</loc>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://i.postimg.cc/8k0XLvTx/miko-ir-kipro-petrausku-namai-01.jpg</image:loc>
+            <image:title>Petrauskų Namai</image:title>
+        </image:image>
     </url>
     <url>
         <loc>https://portfolio.dominikphotofficial.lt/albums/valdovu-rumai.html</loc>
+        <lastmod>2026-02-21</lastmod>
         <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://i.postimg.cc/C5XjhNy7/Vilniaus-muziejus.png</image:loc>
+            <image:title>Valdovų Rūmai</image:title>
+        </image:image>
     </url>
 </urlset>
