@@ -1,87 +1,49 @@
-// script.js
-
-// Menu Toggle
-const mobileMenu = document.getElementById('mobile-menu');
-const sideMenu = document.getElementById('side-menu');
-
-mobileMenu.addEventListener('click', () => {
-    sideMenu.classList.toggle('active');
-});
-
-// Header scroll effect
-const header = document.getElementById('header');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
-
-// Intersection Observer for fade-in animations
-const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-};
-
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+document.addEventListener("DOMContentLoaded", () => {
+    
+    const preloader = document.getElementById("preloader");
+    window.addEventListener("load", () => {
+        if (preloader) {
+            preloader.style.opacity = "0";
+            setTimeout(() => {
+                preloader.style.display = "none";
+            }, 500);
         }
     });
-}, observerOptions);
 
-document.querySelectorAll('.fade-in').forEach(element => {
-    observer.observe(element);
-});
+    const header = document.querySelector("header");
+    window.addEventListener("scroll", () => {
+        if (header) {
+            if (window.scrollY > 50) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        }
+    });
 
-// Lightbox Functionality
-let currentImageIndex = 0;
-const images =[];
-document.querySelectorAll('.gallery-item img').forEach(img => {
-    images.push(img.src);
-});
-
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const lightboxCounter = document.getElementById('lightbox-counter');
-
-function openLightbox(index) {
-    if(images.length === 0) return;
-    currentImageIndex = index;
-    updateLightbox();
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden'; 
-}
-
-function closeLightbox() {
-    lightbox.classList.remove('active');
-    document.body.style.overflow = 'auto'; 
-}
-
-function changeImage(direction) {
-    currentImageIndex += direction;
-    if (currentImageIndex >= images.length) {
-        currentImageIndex = 0;
-    } else if (currentImageIndex < 0) {
-        currentImageIndex = images.length - 1;
+    const burger = document.querySelector(".burger");
+    const navMenu = document.querySelector(".nav-menu");
+    if (burger && navMenu) {
+        burger.addEventListener("click", () => {
+            burger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+            
+            if (navMenu.classList.contains("active")) {
+                header.classList.add("scrolled");
+            } else if (window.scrollY <= 50) {
+                header.classList.remove("scrolled");
+            }
+        });
     }
-    updateLightbox();
-}
 
-function updateLightbox() {
-    lightboxImg.src = images[currentImageIndex];
-    if(lightboxCounter) {
-        lightboxCounter.innerText = `${currentImageIndex + 1} / ${images.length}`;
+    const slides = document.querySelectorAll(".hero-slide");
+    let currentSlide = 0;
+    
+    if (slides.length > 1) {
+        setInterval(() => {
+            slides[currentSlide].classList.remove("active");
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add("active");
+        }, 5000);
     }
-}
-
-// Close lightbox on Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') changeImage(1);
-    if (e.key === 'ArrowLeft') changeImage(-1);
 });
