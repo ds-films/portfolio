@@ -1,3 +1,4 @@
+/* style.css (Atnaujinta / Updated) */
 :root {
     --bg-color: #FFFFFF;
     --text-color: #222222;
@@ -80,21 +81,12 @@ header.scrolled {
     align-items: center;
 }
 
+/* LOGO PAKEITIMAS: Pašalinti filtrai, dabar logo visada atrodo originaliai */
 .logo img {
     height: 25px;
     width: auto;
     display: block;
     transition: transform 0.3s;
-}
-
-header:not(.scrolled) .logo img {
-    filter: invert(1) brightness(2);
-    mix-blend-mode: screen;
-}
-
-header.scrolled .logo img {
-    filter: none;
-    mix-blend-mode: multiply;
 }
 
 .logo img:hover {
@@ -309,6 +301,7 @@ header.scrolled .burger div {
     transform: translateY(0);
 }
 
+/* Gallery Masonry (Albumų puslapiams) */
 .gallery-grid {
     column-count: 3;
     column-gap: 20px;
@@ -333,6 +326,7 @@ header.scrolled .burger div {
     opacity: 0.9;
 }
 
+/* Lightbox */
 .lightbox {
     position: fixed;
     top: 0;
