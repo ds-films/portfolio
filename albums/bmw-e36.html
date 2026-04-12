@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BMW E36 | DP.PORTFOLIO</title>
-    <meta name="description" content="Automobilių fotografija: BMW E36. Klasikinis dizainas, detalės ir naktinė miesto atmosfera.">
+    <meta name="description" content="Automobilių fotografija: BMW E36. Klasikinis dizainas, detalės ir naktinė miesto atmosfera per Dominikphotofficial objektyvą.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://portfolio.dominikphotofficial.lt/albums/bmw-e36.html">
     <meta property="og:type" content="article">
@@ -14,7 +14,7 @@
     <meta property="og:image" content="https://i.postimg.cc/vTpSGtSm/BMWE36-01.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" type="image/png" href="https://iili.io/fjNLbs4.png">
 </head>
@@ -31,31 +31,41 @@
         </div>
     </header>
     <div class="nav-menu">
-        <a href="../index.html">Darbai</a>
-        <a href="../services.html">Paslaugos</a>
-        <a href="../biography.html">Biografija</a>
-        <a href="../about.html">Apie</a>
-        <a href="../contacts.html">Kontaktai</a>
+        <a href="../index.html" class="nav-link">Darbai</a>
+        <a href="../services.html" class="nav-link">Paslaugos</a>
+        <a href="../about.html" class="nav-link">Apie</a>
+        <a href="../contacts.html" class="nav-link">Kontaktai</a>
     </div>
     <section class="container" style="padding-top: 140px;">
-        <div class="text-content" style="margin-bottom: 60px;">
+        <div class="text-content" style="margin-bottom: 60px; text-align: center;">
             <h1 style="font-family: 'Jost'; text-transform: uppercase; margin-bottom: 20px; font-size: 2.5rem; letter-spacing: 2px;">
                 BMW E36
             </h1>
-            <div style="width: 50px; height: 2px; background-color: #139393; margin: 0 auto 25px auto;"></div>
+            <div style="width: 50px; height: 2px; background-color: #113939; margin: 0 auto 25px auto;"></div>
             <p style="color: #444; max-width: 650px; margin: 0 auto; line-height: 1.8;">
                 BMW E36 – tai trečiosios serijos modelis, gamintas 1990–2000 metais, tapęs modernios klasikos ikona. Šis automobilis vertinamas dėl savo vairavimo savybių, aerodinaminio „delfino“ dizaino ir inžinerinio tikslumo. Nuotraukų serijoje užfiksuotas ne tik automobilio siluetas, bet ir nakties miesto šviesų žaismas, pabrėžiantis kėbulo linijas.
             </p>
         </div>
         <div class="gallery-grid">
-            <div class="gallery-item"><img src="https://i.postimg.cc/vTpSGtSm/BMWE36-01.jpg" loading="lazy"></div>
-            <div class="gallery-item"><img src="https://i.postimg.cc/wxPr59Td/BMWE36-02.jpg" loading="lazy"></div>
-            <div class="gallery-item"><img src="https://i.postimg.cc/C1x271qw/BMWE36-03.jpg" loading="lazy"></div>
-            <div class="gallery-item"><img src="https://i.postimg.cc/bJVBBhxk/BMWE36-04.jpg" loading="lazy"></div>
-            <div class="gallery-item"><img src="https://i.postimg.cc/6px1Szvj/BMWE36-05.jpg" loading="lazy"></div>
-            <div class="gallery-item"><img src="https://i.postimg.cc/mkc5x5jq/BMWE36-06.jpg" loading="lazy"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/vTpSGtSm/BMWE36-01.jpg" alt="BMW E36 1" loading="lazy"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/wxPr59Td/BMWE36-02.jpg" alt="BMW E36 2" loading="lazy"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/C1x271qw/BMWE36-03.jpg" alt="BMW E36 3" loading="lazy"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/bJVBBhxk/BMWE36-04.jpg" alt="BMW E36 4" loading="lazy"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/6px1Szvj/BMWE36-05.jpg" alt="BMW E36 5" loading="lazy"></div>
+            <div class="gallery-item"><img src="https://i.postimg.cc/mkc5x5jq/BMWE36-06.jpg" alt="BMW E36 6" loading="lazy"></div>
         </div>
     </section>
+
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-top">
+            <span id="lightbox-counter">1 / 1</span>
+            <button class="lightbox-close">&times;</button>
+        </div>
+        <button class="lightbox-prev">&lsaquo;</button>
+        <img id="lightbox-img" src="" alt="Fullscreen">
+        <button class="lightbox-next">&rsaquo;</button>
+    </div>
+
     <script src="../script.js"></script>
 </body>
 </html>
