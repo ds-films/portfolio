@@ -1,15 +1,24 @@
-document.addEventListener("DOMContentLoaded", () => {
-    
+window.addEventListener("load", () => {
     const preloader = document.getElementById("preloader");
-    window.addEventListener("load", () => {
-        if (preloader) {
-            preloader.style.opacity = "0";
-            setTimeout(() => {
-                preloader.style.display = "none";
-            }, 500);
-        }
-    });
+    if (preloader) {
+        preloader.style.opacity = "0";
+        setTimeout(() => {
+            preloader.style.display = "none";
+        }, 500);
+    }
+});
 
+setTimeout(() => {
+    const preloader = document.getElementById("preloader");
+    if (preloader && preloader.style.display !== "none") {
+        preloader.style.opacity = "0";
+        setTimeout(() => {
+            preloader.style.display = "none";
+        }, 500);
+    }
+}, 2000);
+
+document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector("header");
     window.addEventListener("scroll", () => {
         if (header) {
@@ -58,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const nextBtn = document.querySelector(".lightbox-next");
 
         let currentIndex = 0;
-        let imageArray = [];
+        let imageArray =[];
 
         galleryImages.forEach((img, index) => {
             imageArray.push(img.src);
