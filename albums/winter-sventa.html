@@ -1,8 +1,9 @@
+<!-- albums/winter-sventa.html -->
 <!DOCTYPE html>
 <html lang="lt">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>WINTER | ŠVENTA - DP.PORTFOLIO</title>
     <meta name="description" content="WINTER | ŠVENTA. Žiemos fotografijos iš Šventos kaimo ir Sirvėtos regioninio parko. Užšalusi upė ir apsnigtas miškas. Autorius Dominik Šuškevič.">
     <meta name="keywords" content="Dominik Šuškevič, Šventa, Šventosios upė, žiema, sniegas, fotografija, Sirvėtos parkas, peizažas, minimalizmas">
@@ -19,13 +20,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Jost:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" type="image/png" href="https://iili.io/fjNLbs4.png">
-    <script src="../script.js" defer></script>
 </head>
 <body>
     <div id="preloader"><div class="loader"></div></div>
     <header>
         <div class="logo">
-            <a href="../index.html"><img src="https://iili.io/fjNLbs4.png" alt="DP Logo" width="100" height="40"></a>
+            <a href="../index.html"><img src="https://iili.io/fjNLbs4.png" alt="DP Logo"></a>
         </div>
         <div class="burger">
             <div></div>
@@ -34,15 +34,16 @@
         </div>
     </header>
     <div class="nav-menu">
-        <a href="../index.html">Darbai</a>
-        <a href="../services.html">Paslaugos</a>
-        <a href="../about.html">Apie</a>
-        <a href="../contacts.html">Kontaktai</a>
+        <a href="../index.html" class="nav-link">Darbai</a>
+        <a href="../services.html" class="nav-link">Paslaugos</a>
+        <a href="../biography.html" class="nav-link">Biografija</a>
+        <a href="../about.html" class="nav-link">Apie</a>
+        <a href="../contacts.html" class="nav-link">Kontaktai</a>
     </div>
     <section class="container" style="padding-top: 140px;">
-        <div class="text-content">
-            <h1 style="font-family: 'Jost'; text-transform: uppercase;">WINTER | ŠVENTA</h1>
-            <div class="divider" style="background-color: #139393; width: 50px; height: 2px; margin: 20px auto;"></div>
+        <div class="text-content" style="margin-bottom: 60px; text-align: center;">
+            <h1 style="font-family: 'Jost'; text-transform: uppercase; margin-bottom: 20px; font-size: 2.5rem; letter-spacing: 2px;">WINTER | ŠVENTA</h1>
+            <div class="divider" style="background-color: #113939; width: 50px; height: 2px; margin: 0 auto 25px auto;"></div>
             <p style="color: #444; max-width: 650px; margin: 0 auto; line-height: 1.8;">
                 Ši serija atskleidžia Šventos kaimo ir jo apylinkių grožį žiemą. Apsnigtas miškas, tylūs takai ir užšalusi, bet vis dar gyva upė kuria ypatingą, minimalistinę nuotaiką, būdingą šiam metų laikui Sirvėtos regioniniame parke.
             </p>
@@ -62,9 +63,21 @@
             <div class="gallery-item"><img src="https://i.postimg.cc/J0J8tbYj/winter-album-sventa-16.jpg" width="800" height="1200" alt="Sventa 16" loading="lazy"></div>
             <div class="gallery-item"><img src="https://i.postimg.cc/RF29MPdK/winter-album-sventa-17.jpg" width="800" height="1200" alt="Sventa 17" loading="lazy"></div>
         </div>
-        <div style="text-align: center; margin-top: 50px;">
-            <a href="winter.html" class="back-btn-dark">← Grįžti į Winter meniu</a>
+        <div style="text-align: center; margin-top: 80px; margin-bottom: 40px;">
+            <a href="winter.html" style="display: inline-block; padding: 15px 40px; border: 1px solid #222222; color: #222222; font-family: 'Jost', sans-serif; text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#113939'; this.style.color='#FFFFFF'; this.style.borderColor='#113939';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#222222'; this.style.borderColor='#222222';">← Grįžti į Winter meniu</a>
         </div>
     </section>
+
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-top">
+            <span id="lightbox-counter">1 / 1</span>
+            <button class="lightbox-close">&times;</button>
+        </div>
+        <button class="lightbox-prev">&lsaquo;</button>
+        <img id="lightbox-img" src="" alt="Fullscreen">
+        <button class="lightbox-next">&rsaquo;</button>
+    </div>
+
+    <script src="../script.js"></script>
 </body>
 </html>
