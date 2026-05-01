@@ -16,17 +16,14 @@ setTimeout(() => {
             preloader.style.display = "none";
         }, 500);
     }
-}, 2000);
+}, 3000);
 
 document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector("header");
     window.addEventListener("scroll", () => {
         if (header) {
-            if (window.scrollY > 50) {
-                header.classList.add("scrolled");
-            } else {
-                header.classList.remove("scrolled");
-            }
+            if (window.scrollY > 50) header.classList.add("scrolled");
+            else header.classList.remove("scrolled");
         }
     });
 
@@ -36,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
         burger.addEventListener("click", () => {
             burger.classList.toggle("active");
             navMenu.classList.toggle("active");
-            
             if (navMenu.classList.contains("active")) {
                 header.classList.add("scrolled");
             } else if (window.scrollY <= 50) {
@@ -57,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const galleryImages = document.querySelectorAll(".gallery-item img");
     const lightbox = document.getElementById("lightbox");
-    
     if (galleryImages.length > 0 && lightbox) {
         const lightboxImg = document.getElementById("lightbox-img");
         const lightboxCounter = document.getElementById("lightbox-counter");
@@ -72,26 +67,25 @@ document.addEventListener("DOMContentLoaded", () => {
             imageArray.push(img.src);
             img.addEventListener("click", () => {
                 currentIndex = index;
-                updateLightbox();
+                if (lightboxImg) lightboxImg.src = imageArray[currentIndex];
+                if (lightboxCounter) lightboxCounter.textContent = `${currentIndex + 1} / ${imageArray.length}`;
                 lightbox.classList.add("active");
             });
         });
 
-        function updateLightbox() {
+        const updateL = () => {
             if (lightboxImg) lightboxImg.src = imageArray[currentIndex];
             if (lightboxCounter) lightboxCounter.textContent = `${currentIndex + 1} / ${imageArray.length}`;
-        }
+        };
 
         if (closeBtn) closeBtn.addEventListener("click", () => lightbox.classList.remove("active"));
-        
         if (nextBtn) nextBtn.addEventListener("click", () => {
             currentIndex = (currentIndex + 1) % imageArray.length;
-            updateLightbox();
+            updateL();
         });
-
         if (prevBtn) prevBtn.addEventListener("click", () => {
             currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
-            updateLightbox();
+            updateL();
         });
 
         document.addEventListener("keydown", (e) => {
@@ -99,11 +93,11 @@ document.addEventListener("DOMContentLoaded", () => {
             if (e.key === "Escape") lightbox.classList.remove("active");
             if (e.key === "ArrowRight") {
                 currentIndex = (currentIndex + 1) % imageArray.length;
-                updateLightbox();
+                updateL();
             }
             if (e.key === "ArrowLeft") {
                 currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
-                updateLightbox();
+                updateL();
             }
         });
     }
