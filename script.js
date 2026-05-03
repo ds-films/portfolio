@@ -22,8 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector("header");
     window.addEventListener("scroll", () => {
         if (header) {
-            if (window.scrollY > 50) header.classList.add("scrolled");
-            else header.classList.remove("scrolled");
+            if (window.scrollY > 50) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
         }
     });
 
@@ -35,8 +38,12 @@ document.addEventListener("DOMContentLoaded", () => {
             navMenu.classList.toggle("active");
             if (navMenu.classList.contains("active")) {
                 header.classList.add("scrolled");
-            } else if (window.scrollY <= 50) {
-                header.classList.remove("scrolled");
+                document.body.style.overflow = "hidden";
+            } else {
+                if (window.scrollY <= 50) {
+                    header.classList.remove("scrolled");
+                }
+                document.body.style.overflow = "auto";
             }
         });
     }
@@ -70,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (lightboxImg) lightboxImg.src = imageArray[currentIndex];
                 if (lightboxCounter) lightboxCounter.textContent = `${currentIndex + 1} / ${imageArray.length}`;
                 lightbox.classList.add("active");
+                document.body.style.overflow = "hidden";
             });
         });
 
@@ -78,11 +86,16 @@ document.addEventListener("DOMContentLoaded", () => {
             if (lightboxCounter) lightboxCounter.textContent = `${currentIndex + 1} / ${imageArray.length}`;
         };
 
-        if (closeBtn) closeBtn.addEventListener("click", () => lightbox.classList.remove("active"));
+        if (closeBtn) closeBtn.addEventListener("click", () => {
+            lightbox.classList.remove("active");
+            document.body.style.overflow = "auto";
+        });
+        
         if (nextBtn) nextBtn.addEventListener("click", () => {
             currentIndex = (currentIndex + 1) % imageArray.length;
             updateL();
         });
+        
         if (prevBtn) prevBtn.addEventListener("click", () => {
             currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
             updateL();
@@ -90,7 +103,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.addEventListener("keydown", (e) => {
             if (!lightbox.classList.contains("active")) return;
-            if (e.key === "Escape") lightbox.classList.remove("active");
+            if (e.key === "Escape") {
+                lightbox.classList.remove("active");
+                document.body.style.overflow = "auto";
+            }
             if (e.key === "ArrowRight") {
                 currentIndex = (currentIndex + 1) % imageArray.length;
                 updateL();
