@@ -2,34 +2,24 @@ window.addEventListener("load", () => {
     const preloader = document.getElementById("preloader");
     if (preloader) {
         preloader.style.opacity = "0";
-        setTimeout(() => {
-            preloader.style.display = "none";
-        }, 500);
+        setTimeout(() => { preloader.style.display = "none"; }, 500);
     }
 });
-
 setTimeout(() => {
     const preloader = document.getElementById("preloader");
     if (preloader && preloader.style.display !== "none") {
         preloader.style.opacity = "0";
-        setTimeout(() => {
-            preloader.style.display = "none";
-        }, 500);
+        setTimeout(() => { preloader.style.display = "none"; }, 500);
     }
 }, 3000);
-
 document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector("header");
     window.addEventListener("scroll", () => {
         if (header) {
-            if (window.scrollY > 50) {
-                header.classList.add("scrolled");
-            } else {
-                header.classList.remove("scrolled");
-            }
+            if (window.scrollY > 50) header.classList.add("scrolled");
+            else header.classList.remove("scrolled");
         }
     });
-
     const burger = document.querySelector(".burger");
     const navMenu = document.querySelector(".nav-menu");
     if (burger && navMenu) {
@@ -40,14 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 header.classList.add("scrolled");
                 document.body.style.overflow = "hidden";
             } else {
-                if (window.scrollY <= 50) {
-                    header.classList.remove("scrolled");
-                }
+                if (window.scrollY <= 50) header.classList.remove("scrolled");
                 document.body.style.overflow = "auto";
             }
         });
     }
-
     const slides = document.querySelectorAll(".hero-slide");
     let currentSlide = 0;
     if (slides.length > 1) {
@@ -57,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
             slides[currentSlide].classList.add("active");
         }, 5000);
     }
-
     const galleryImages = document.querySelectorAll(".gallery-item img");
     const lightbox = document.getElementById("lightbox");
     if (galleryImages.length > 0 && lightbox) {
@@ -66,10 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const closeBtn = document.querySelector(".lightbox-close");
         const prevBtn = document.querySelector(".lightbox-prev");
         const nextBtn = document.querySelector(".lightbox-next");
-
         let currentIndex = 0;
         let imageArray = [];
-
         galleryImages.forEach((img, index) => {
             imageArray.push(img.src);
             img.addEventListener("click", () => {
@@ -80,44 +64,23 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.body.style.overflow = "hidden";
             });
         });
-
         const updateL = () => {
             if (lightboxImg) lightboxImg.src = imageArray[currentIndex];
             if (lightboxCounter) lightboxCounter.textContent = `${currentIndex + 1} / ${imageArray.length}`;
         };
-
         if (closeBtn) closeBtn.addEventListener("click", () => {
             lightbox.classList.remove("active");
             document.body.style.overflow = "auto";
         });
-        
-        if (nextBtn) nextBtn.addEventListener("click", () => {
-            currentIndex = (currentIndex + 1) % imageArray.length;
-            updateL();
-        });
-        
-        if (prevBtn) prevBtn.addEventListener("click", () => {
-            currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
-            updateL();
-        });
-
+        if (nextBtn) nextBtn.addEventListener("click", () => { currentIndex = (currentIndex + 1) % imageArray.length; updateL(); });
+        if (prevBtn) prevBtn.addEventListener("click", () => { currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length; updateL(); });
         document.addEventListener("keydown", (e) => {
             if (!lightbox.classList.contains("active")) return;
-            if (e.key === "Escape") {
-                lightbox.classList.remove("active");
-                document.body.style.overflow = "auto";
-            }
-            if (e.key === "ArrowRight") {
-                currentIndex = (currentIndex + 1) % imageArray.length;
-                updateL();
-            }
-            if (e.key === "ArrowLeft") {
-                currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
-                updateL();
-            }
+            if (e.key === "Escape") { lightbox.classList.remove("active"); document.body.style.overflow = "auto"; }
+            if (e.key === "ArrowRight") { currentIndex = (currentIndex + 1) % imageArray.length; updateL(); }
+            if (e.key === "ArrowLeft") { currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length; updateL(); }
         });
     }
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -126,6 +89,5 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }, { threshold: 0.1 });
-
     document.querySelectorAll(".fade-in-up").forEach(el => observer.observe(el));
 });
