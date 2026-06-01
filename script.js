@@ -1,3 +1,11 @@
+const cbScript = document.createElement('script');
+cbScript.id = 'Cookiebot';
+cbScript.src = 'https://consent.cookiebot.com/uc.js';
+cbScript.setAttribute('data-cbid', '06c15308-ea25-4737-9b50-13705638aa99');
+cbScript.setAttribute('data-blockingmode', 'auto');
+cbScript.type = 'text/javascript';
+document.head.appendChild(cbScript);
+
 window.addEventListener("load", () => {
     const preloader = document.getElementById("preloader");
     if (preloader) {
@@ -16,7 +24,7 @@ setTimeout(() => {
             preloader.style.display = "none";
         }, 500);
     }
-}, 2500);
+}, 3000);
 
 document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector("header");
@@ -60,7 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const galleryImages = document.querySelectorAll(".gallery-item img");
     const lightbox = document.getElementById("lightbox");
-    
     if (galleryImages.length > 0 && lightbox) {
         const lightboxImg = document.getElementById("lightbox-img");
         const lightboxCounter = document.getElementById("lightbox-counter");
@@ -75,16 +82,17 @@ document.addEventListener("DOMContentLoaded", () => {
             imageArray.push(img.src);
             img.addEventListener("click", () => {
                 currentIndex = index;
-                updateLightbox();
+                if (lightboxImg) lightboxImg.src = imageArray[currentIndex];
+                if (lightboxCounter) lightboxCounter.textContent = `${currentIndex + 1} / ${imageArray.length}`;
                 lightbox.classList.add("active");
                 document.body.style.overflow = "hidden";
             });
         });
 
-        function updateLightbox() {
+        const updateL = () => {
             if (lightboxImg) lightboxImg.src = imageArray[currentIndex];
             if (lightboxCounter) lightboxCounter.textContent = `${currentIndex + 1} / ${imageArray.length}`;
-        }
+        };
 
         if (closeBtn) {
             closeBtn.addEventListener("click", () => {
@@ -92,18 +100,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.body.style.overflow = "auto";
             });
         }
-        
         if (nextBtn) {
             nextBtn.addEventListener("click", () => {
                 currentIndex = (currentIndex + 1) % imageArray.length;
-                updateLightbox();
+                updateL();
             });
         }
-        
         if (prevBtn) {
             prevBtn.addEventListener("click", () => {
                 currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
-                updateLightbox();
+                updateL();
             });
         }
 
@@ -115,11 +121,11 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             if (e.key === "ArrowRight") {
                 currentIndex = (currentIndex + 1) % imageArray.length;
-                updateLightbox();
+                updateL();
             }
             if (e.key === "ArrowLeft") {
                 currentIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
-                updateLightbox();
+                updateL();
             }
         });
     }
