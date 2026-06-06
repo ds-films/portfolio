@@ -3,16 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TFP Registracija | DP.PORTFOLIO</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_green.css">
+    <title>TFP Fotosesija Kaune | Registracija | DP.PORTFOLIO</title>
+    <meta name="description" content="Registruokitės nemokamai TFP fotosesijai Kaune. Kurkime vizualų portfolio kartu su Fujifilm X-S20 kokybe. Dominik Šuškevič kūrybiniai mainai ir meninė fotografija.">
+    <meta name="keywords" content="TFP fotosesija, nemokama fotosesija Kaunas, Dominik Šuškevič, Fujifilm X-S20, fotografas Kaune, modelių paieška, vizualinis turinis, portfolio pildymas">
+    <meta name="author" content="Dominik Šuškevič">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://portfolio.dominikphotofficial.lt/tfp-booking.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://portfolio.dominikphotofficial.lt/tfp-booking.html">
+    <meta property="og:title" content="TFP Fotosesija Kaune | Registracija | DP.PORTFOLIO">
+    <meta property="og:description" content="Ieškau naujų veidų portfolio pildymui. Registruokitės kūrybiniam projektui su Fujifilm X-S20.">
+    <meta property="og:image" content="https://i.postimg.cc/Jnv9KRSs/IMG-7441.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_green.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="https://iili.io/fjNLbs4.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "TFP Fotosesijos Registracija",
+      "description": "Nemokamų TFP fotosesijų registracijos forma Kaune.",
+      "publisher": {
+        "@type": "Person",
+        "name": "Dominik Šuškevič"
+      }
+    }
+    </script>
     <style>
-        .booking-grid {
+        .booking-layout {
             max-width: 1100px;
             margin: 0 auto;
             padding: 160px 20px 100px;
@@ -21,7 +43,7 @@
             gap: 80px;
             align-items: start;
         }
-        .info-content h1 {
+        .info-column h1 {
             font-family: 'Jost';
             text-transform: uppercase;
             letter-spacing: 6px;
@@ -29,7 +51,7 @@
             margin-bottom: 30px;
             color: #222;
         }
-        .info-content p {
+        .info-column p {
             font-family: 'Josefin Sans';
             font-size: 1.1rem;
             line-height: 1.8;
@@ -37,17 +59,17 @@
             margin-bottom: 25px;
             font-weight: 300;
         }
-        .info-content strong {
+        .info-column strong {
             font-weight: 400;
             color: #113939;
         }
-        .form-container {
+        .form-card {
             background: #ffffff;
             padding: 50px;
             border: 1px solid #eee;
             box-shadow: 0 15px 40px rgba(0,0,0,0.02);
         }
-        .input-label {
+        .field-label {
             display: block;
             font-family: 'Jost';
             text-transform: uppercase;
@@ -56,7 +78,7 @@
             margin-bottom: 10px;
             color: #222;
         }
-        .input-box {
+        .form-input {
             width: 100%;
             padding: 15px;
             margin-bottom: 25px;
@@ -68,10 +90,10 @@
             border-radius: 0;
             background: transparent;
         }
-        .input-box:focus {
+        .form-input:focus {
             border-color: #113939;
         }
-        .submit-button {
+        .cta-button {
             width: 100%;
             padding: 20px;
             background: #113939;
@@ -84,23 +106,23 @@
             cursor: pointer;
             transition: opacity 0.3s;
         }
-        .submit-button:hover {
+        .cta-button:hover {
             opacity: 0.9;
         }
-        #success-note {
+        #success-display {
             display: none;
             text-align: center;
-            padding: 40px;
+            padding: 60px 20px;
             border: 1px solid #113939;
             background: #f9f9f9;
         }
         @media (max-width: 900px) {
-            .booking-grid {
+            .booking-layout {
                 grid-template-columns: 1fr;
                 padding-top: 120px;
                 gap: 50px;
             }
-            .info-content {
+            .info-column {
                 text-align: center;
             }
         }
@@ -108,7 +130,6 @@
 </head>
 <body>
     <div id="preloader"><div class="loader"></div></div>
-    
     <header>
         <div class="logo">
             <a href="index.html">
@@ -121,7 +142,6 @@
             <div></div>
         </div>
     </header>
-
     <div class="nav-menu">
         <a href="index.html" class="nav-link">Darbai</a>
         <a href="tfp-booking.html" class="nav-link">TFP Registracija</a>
@@ -130,53 +150,43 @@
         <a href="about.html" class="nav-link">Apie</a>
         <a href="contacts.html" class="nav-link">Kontaktai</a>
     </div>
-
-    <section class="booking-grid">
-        <div class="info-content fade-in-up">
+    <section class="booking-layout">
+        <div class="info-column fade-in-up">
             <h1>TFP Fotosesija</h1>
             <p>Ieškau naujų veidų ir kūrybiškų idėjų savo portfolio papildymui. TFP (Time for Print) yra bendradarbiavimo forma, kurioje modelis ir fotografas dirba kartu be finansinio atlygio, siekdami sukurti aukščiausios kokybės vizualinį turinį.</p>
             <p>Fotosesijos metu naudojama <strong>Fujifilm X-S20</strong> įranga, užtikrinanti kinematografišką vaizdą ir gilias spalvas. Tai puiki galimybė gauti profesionalias nuotraukas mainais į jūsų laiką ir pozavimą.</p>
             <p>Pasirinkite jums patogią datą kalendoriuje ir aprašykite savo viziją.</p>
         </div>
-
-        <div class="form-container fade-in-up">
-            <div id="success-note">
-                <p style="font-family: 'Josefin Sans'; font-size: 1.1rem; line-height: 1.8; color: #222;">
+        <div class="form-card fade-in-up">
+            <div id="success-display">
+                <p style="font-family: 'Josefin Sans'; font-size: 1.2rem; line-height: 1.8; color: #222;">
                     Ačiū! Gavau jūsų registraciją. Peržiūrėsiu jūsų idėjas ir paskambinsiu patikslinti detalių bei laiko. Jei turite skubių klausimų, galite man parašyti tiesiogiai.
                 </p>
             </div>
-
-            <form action="https://formspree.io/f/mgvnbvaw" method="POST" id="booking-form">
-                <label class="input-label">Vardas ir Pavardė</label>
-                <input type="text" name="name" class="input-box" required>
-
-                <label class="input-label">Telefonas</label>
-                <input type="tel" name="phone" class="input-box" placeholder="+370" required>
-
-                <label class="input-label">Data ir laikas</label>
-                <input type="text" id="date-selector" name="date" class="input-box" placeholder="Pasirinkite laiką..." required>
-
-                <label class="input-label">Vieta Kaune</label>
-                <input type="text" name="location" class="input-box" placeholder="Pvz. Senamiestis, Ąžuolynas" required>
-
-                <label class="input-label">Idėjos / Nuorodos</label>
-                <textarea name="message" class="input-box" rows="3" placeholder="Pinterest ar Instagram nuorodos..."></textarea>
-
-                <button type="submit" class="submit-button">Rezervuoti</button>
+            <form action="https://formspree.io/f/mgvnbvaw" method="POST" id="tfp-booking-form">
+                <label class="field-label">Vardas ir Pavardė *</label>
+                <input type="text" name="name" class="form-input" required>
+                <label class="field-label">Telefono numeris *</label>
+                <input type="tel" name="phone" class="form-input" placeholder="+370" required>
+                <label class="field-label">Pageidaujama data ir laikas *</label>
+                <input type="text" id="datetime-picker" name="date_time" class="form-input" placeholder="Pasirinkite..." required>
+                <label class="field-label">Kurioje Kauno vietoje norėtumėte fotografuotis? *</label>
+                <input type="text" name="location" class="form-input" placeholder="Lokacija Kaune" required>
+                <label class="field-label">Nuorodos į referencus (Pinterest/IG)</label>
+                <textarea name="references" class="form-input" rows="3" placeholder="Moodboard nuorodos..."></textarea>
+                <button type="submit" class="cta-button">Registruotis fotosesijai</button>
             </form>
         </div>
     </section>
-
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/lt.js"></script>
     <script src="script.js"></script>
     <script>
         const BUSY_DATES = [
-            "2026-06-12",
-            "2026-06-18"
+            "2026-06-15",
+            "2026-06-22"
         ];
-
-        flatpickr("#date-selector", {
+        flatpickr("#datetime-picker", {
             enableTime: true,
             dateFormat: "Y-m-d H:i",
             minDate: "today",
@@ -188,16 +198,19 @@
                 },
                 ...BUSY_DATES
             ],
-            minTime: "11:00",
-            maxTime: "19:00"
+            minTime: "10:00",
+            maxTime: "20:00"
         });
-
-        const form = document.getElementById('booking-form');
-        form.addEventListener('submit', function() {
+        const form = document.getElementById('tfp-booking-form');
+        form.addEventListener('submit', function(e) {
+            const submitBtn = form.querySelector('button');
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Siunčiama...';
             setTimeout(() => {
                 form.style.display = 'none';
-                document.getElementById('success-note').style.display = 'block';
-            }, 500);
+                document.getElementById('success-display').style.display = 'block';
+                window.scrollTo({ top: 200, behavior: 'smooth' });
+            }, 1000);
         });
     </script>
 </body>
