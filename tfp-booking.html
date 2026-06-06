@@ -4,13 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>TFP Registracija | DP.PORTFOLIO</title>
-    <meta name="description" content="Registruokitės nemokamai TFP fotosesijai Kaune. Kurkime vizualų portfolio kartu su Fujifilm X-S20 kokybe.">
-    <link rel="canonical" href="https://portfolio.dominikphotofficial.lt/tfp-booking.html">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_green.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="https://iili.io/fjNLbs4.png">
+    <style>
+        .booking-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 160px 20px 100px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+        .info-content h1 {
+            font-family: 'Jost';
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #222;
+        }
+        .info-content p {
+            font-family: 'Josefin Sans';
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+        .info-content strong {
+            font-weight: 400;
+            color: #113939;
+        }
+        .form-container {
+            background: #ffffff;
+            padding: 50px;
+            border: 1px solid #eee;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.02);
+        }
+        .input-label {
+            display: block;
+            font-family: 'Jost';
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            color: #222;
+        }
+        .input-box {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: 1px solid #ddd;
+            font-family: 'Josefin Sans';
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+            border-radius: 0;
+            background: transparent;
+        }
+        .input-box:focus {
+            border-color: #113939;
+        }
+        .submit-button {
+            width: 100%;
+            padding: 20px;
+            background: #113939;
+            color: #ffffff;
+            border: none;
+            font-family: 'Jost';
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .submit-button:hover {
+            opacity: 0.9;
+        }
+        #success-note {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            border: 1px solid #113939;
+            background: #f9f9f9;
+        }
+        @media (max-width: 900px) {
+            .booking-grid {
+                grid-template-columns: 1fr;
+                padding-top: 120px;
+                gap: 50px;
+            }
+            .info-content {
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="preloader"><div class="loader"></div></div>
@@ -18,7 +112,7 @@
     <header>
         <div class="logo">
             <a href="index.html">
-                <img src="https://iili.io/fjNLbs4.png" alt="DP.PORTFOLIO Logo">
+                <img src="https://iili.io/fjNLbs4.png" alt="DP Logo">
             </a>
         </div>
         <div class="burger">
@@ -37,86 +131,73 @@
         <a href="contacts.html" class="nav-link">Kontaktai</a>
     </div>
 
-    <section class="container" style="padding-top: 140px; padding-bottom: 100px;">
-        <div class="text-content" style="max-width: 800px; margin: 0 auto 60px auto; text-align: center;">
-            <h1 style="font-family: 'Jost'; text-transform: uppercase; letter-spacing: 5px; font-size: 2.5rem; margin-bottom: 20px;">TFP Fotosesija</h1>
-            <p style="font-family: 'Josefin Sans'; font-weight: 300; color: #222; line-height: 1.8; font-size: 1.1rem;">
-                Ieškau naujų veidų ir įdomių lokacijų savo portfolio papildymui. Jei turite idėją ir norite profesionalių nuotraukų, užpildykite žemiau esančią formą.
-            </p>
+    <section class="booking-grid">
+        <div class="info-content fade-in-up">
+            <h1>TFP Fotosesija</h1>
+            <p>Ieškau naujų veidų ir kūrybiškų idėjų savo portfolio papildymui. TFP (Time for Print) yra bendradarbiavimo forma, kurioje modelis ir fotografas dirba kartu be finansinio atlygio, siekdami sukurti aukščiausios kokybės vizualinį turinį.</p>
+            <p>Fotosesijos metu naudojama <strong>Fujifilm X-S20</strong> įranga, užtikrinanti kinematografišką vaizdą ir gilias spalvas. Tai puiki galimybė gauti profesionalias nuotraukas mainais į jūsų laiką ir pozavimą.</p>
+            <p>Pasirinkite jums patogią datą kalendoriuje ir aprašykite savo viziją.</p>
         </div>
 
-        <div id="success-box" style="display: none; max-width: 700px; margin: 0 auto; padding: 50px; border: 1px solid #113939; text-align: center; background: #f9f9f9;">
-            <p style="font-family: 'Josefin Sans'; font-size: 1.2rem; line-height: 1.8; color: #222; margin: 0;">
-                Ačiū! Gavau jūsų registraciją. Peržiūrėsiu jūsų idėjas ir paskambinsiu patikslinti detalių bei laiko. Jei turite skubių klausimų, galite man parašyti tiesiogiai.
-            </p>
-        </div>
+        <div class="form-container fade-in-up">
+            <div id="success-note">
+                <p style="font-family: 'Josefin Sans'; font-size: 1.1rem; line-height: 1.8; color: #222;">
+                    Ačiū! Gavau jūsų registraciją. Peržiūrėsiu jūsų idėjas ir paskambinsiu patikslinti detalių bei laiko. Jei turite skubių klausimų, galite man parašyti tiesiogiai.
+                </p>
+            </div>
 
-        <div id="booking-form-wrapper" style="max-width: 700px; margin: 0 auto; background: #ffffff; padding: 40px; border: 1px solid #eee;">
-            <form action="https://formspree.io/f/mgvnbvaw" method="POST" id="tfp-form" style="display: grid; grid-template-columns: 1fr; gap: 25px;">
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div>
-                        <label style="display: block; font-family: 'Jost'; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 10px;">Vardas, Pavardė *</label>
-                        <input type="text" name="name" required style="width: 100%; padding: 15px; border: 1px solid #ddd; font-family: 'Josefin Sans'; outline: none;">
-                    </div>
-                    <div>
-                        <label style="display: block; font-family: 'Jost'; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 10px;">Telefonas *</label>
-                        <input type="tel" name="phone" required placeholder="+370" style="width: 100%; padding: 15px; border: 1px solid #ddd; font-family: 'Josefin Sans'; outline: none;">
-                    </div>
-                </div>
+            <form action="https://formspree.io/f/mgvnbvaw" method="POST" id="booking-form">
+                <label class="input-label">Vardas ir Pavardė</label>
+                <input type="text" name="name" class="input-box" required>
 
-                <div>
-                    <label style="display: block; font-family: 'Jost'; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 10px;">Data ir laikas *</label>
-                    <input type="datetime-local" id="date-picker" name="datetime" required style="width: 100%; padding: 15px; border: 1px solid #ddd; font-family: 'Josefin Sans'; outline: none;">
-                    <p id="date-error" style="color: #ff4d4d; font-size: 0.8rem; margin-top: 8px; display: none; font-family: 'Josefin Sans';">Atsiprašau, antradieniais ir šeštadieniais fotosesijų nevykdau. Pasirinkite kitą dieną.</p>
-                </div>
+                <label class="input-label">Telefonas</label>
+                <input type="tel" name="phone" class="input-box" placeholder="+370" required>
 
-                <div>
-                    <label style="display: block; font-family: 'Jost'; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 10px;">Kurioje Kauno vietoje norėtumėte fotografuotis? *</label>
-                    <input type="text" name="location" required placeholder="Lokacija Kaune" style="width: 100%; padding: 15px; border: 1px solid #ddd; font-family: 'Josefin Sans'; outline: none;">
-                </div>
+                <label class="input-label">Data ir laikas</label>
+                <input type="text" id="date-selector" name="date" class="input-box" placeholder="Pasirinkite laiką..." required>
 
-                <div>
-                    <label style="display: block; font-family: 'Jost'; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 10px;">Nuorodos į referencus (Pinterest/IG)</label>
-                    <textarea name="references" rows="3" placeholder="Įklijuokite nuorodas..." style="width: 100%; padding: 15px; border: 1px solid #ddd; font-family: 'Josefin Sans'; outline: none; resize: vertical;"></textarea>
-                </div>
+                <label class="input-label">Vieta Kaune</label>
+                <input type="text" name="location" class="input-box" placeholder="Pvz. Senamiestis, Ąžuolynas" required>
 
-                <button type="submit" id="submit-btn" style="width: 100%; padding: 20px; background: #113939; color: #fff; border: none; font-family: 'Jost'; text-transform: uppercase; letter-spacing: 4px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;">Registruotis fotosesijai</button>
+                <label class="input-label">Idėjos / Nuorodos</label>
+                <textarea name="message" class="input-box" rows="3" placeholder="Pinterest ar Instagram nuorodos..."></textarea>
+
+                <button type="submit" class="submit-button">Rezervuoti</button>
             </form>
         </div>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/lt.js"></script>
     <script src="script.js"></script>
     <script>
-        const datePicker = document.getElementById('date-picker');
-        const dateError = document.getElementById('date-error');
-        const submitBtn = document.getElementById('submit-btn');
-        const form = document.getElementById('tfp-form');
-        const wrapper = document.getElementById('booking-form-wrapper');
-        const successBox = document.getElementById('success-box');
+        const BUSY_DATES = [
+            "2026-06-12",
+            "2026-06-18"
+        ];
 
-        datePicker.addEventListener('input', function() {
-            const date = new Date(this.value);
-            const day = date.getDay(); 
-            if (day === 2 || day === 6) {
-                dateError.style.display = 'block';
-                submitBtn.disabled = true;
-                submitBtn.style.opacity = '0.3';
-                submitBtn.style.cursor = 'not-allowed';
-            } else {
-                dateError.style.display = 'none';
-                submitBtn.disabled = false;
-                submitBtn.style.opacity = '1';
-                submitBtn.style.cursor = 'pointer';
-            }
+        flatpickr("#date-selector", {
+            enableTime: true,
+            dateFormat: "Y-m-d H:i",
+            minDate: "today",
+            time_24hr: true,
+            locale: "lt",
+            disable: [
+                function(date) {
+                    return (date.getDay() === 2 || date.getDay() === 6);
+                },
+                ...BUSY_DATES
+            ],
+            minTime: "11:00",
+            maxTime: "19:00"
         });
 
-        form.addEventListener('submit', function(e) {
+        const form = document.getElementById('booking-form');
+        form.addEventListener('submit', function() {
             setTimeout(() => {
-                wrapper.style.display = 'none';
-                successBox.style.display = 'block';
-                window.scrollTo({ top: 200, behavior: 'smooth' });
-            }, 1000);
+                form.style.display = 'none';
+                document.getElementById('success-note').style.display = 'block';
+            }, 500);
         });
     </script>
 </body>
