@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TFP Fotosesija | Registracija | DP.PORTFOLIO</title>
+    <meta name="description" content="Registruokitės nemokamai TFP fotosesijai Kaune. Kurkime vizualų portfolio kartu su Fujifilm X-S20 kokybe.">
+    <link rel="canonical" href="https://portfolio.dominikphotofficial.lt/tfp-booking.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="https://iili.io/fjNLbs4.png">
+    <style>
+        body { background-color: #0a0a0a; color: #ffffff; }
+        .booking-container { max-width: 800px; margin: 0 auto; padding: 140px 20px 100px 20px; }
+        .cinematic-card { background: #111; border: 1px solid #222; padding: 50px; border-radius: 2px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+        .form-group { margin-bottom: 30px; }
+        .form-group label { display: block; font-family: 'Jost'; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; color: #888; margin-bottom: 10px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 15px; background: #0a0a0a; border: 1px solid #333; color: #fff; font-family: 'Josefin Sans'; outline: none; transition: border-color 0.3s; }
+        .form-group input:focus { border-color: #113939; }
+        .submit-btn { width: 100%; padding: 20px; background: #113939; color: #fff; border: none; font-family: 'Jost'; text-transform: uppercase; letter-spacing: 4px; cursor: pointer; transition: all 0.3s; }
+        .submit-btn:hover { background: #1a4d4d; }
+        .disabled-msg { color: #ff4d4d; font-size: 0.8rem; margin-top: 5px; display: none; }
+        #success-message { display: none; text-align: center; padding: 40px; border: 1px solid #113939; background: rgba(17, 57, 57, 0.1); }
+    </style>
+</head>
+<body>
+    <div id="preloader"><div class="loader"></div></div>
+    
+    <header>
+        <div class="logo"><a href="index.html"><img src="https://iili.io/fjNLbs4.png" alt="DP Logo"></a></div>
+        <div class="burger"><div></div><div></div><div></div></div>
+    </header>
+
+    <div class="nav-menu">
+        <a href="index.html" class="nav-link">Darbai</a>
+        <a href="services.html" class="nav-link">Paslaugos</a>
+        <a href="biography.html" class="nav-link">Biografija</a>
+        <a href="about.html" class="nav-link">Apie</a>
+        <a href="contacts.html" class="nav-link">Kontaktai</a>
+    </div>
+
+    <section class="booking-container">
+        <div class="text-content" style="text-align: center; margin-bottom: 60px;">
+            <h1 style="font-family: 'Jost'; text-transform: uppercase; letter-spacing: 8px; font-size: 2.5rem; margin-bottom: 20px;">TFP Portfolio</h1>
+            <p style="font-family: 'Josefin Sans'; font-weight: 300; color: #888; max-width: 600px; margin: 0 auto; line-height: 1.8;">
+                Ieškau naujų veidų ir drąsių idėjų savo portfolio papildymui. Dirbu su Fujifilm X-S20 įranga, siekdamas aukščiausios kinematografinės kokybės. Registruokitės bendram projektui.
+            </p>
+        </div>
+
+        <div id="success-message">
+            <p style="font-family: 'Josefin Sans'; font-size: 1.2rem; line-height: 1.8;">
+                Ačiū! Gavau jūsų registraciją. Peržiūrėsiu jūsų idėjas ir paskambinsiu patikslinti detalių bei laiko. Jei turite skubių klausimų, galite man parašyti tiesiogiai.
+            </p>
+        </div>
+
+        <div class="cinematic-card" id="form-card">
+            <form action="https://formspree.io/f/mgvnbvaw" method="POST" id="tfp-form">
+                <div class="form-group">
+                    <label>Vardas ir Pavardė *</label>
+                    <input type="text" name="name" required placeholder="Įveskite savo vardą">
+                </div>
+
+                <div class="form-group">
+                    <label>Telefono numeris *</label>
+                    <input type="tel" name="phone" required placeholder="+370 600 00000">
+                </div>
+
+                <div class="form-group">
+                    <label>Pageidaujama data ir laikas *</label>
+                    <input type="datetime-local" id="date-picker" name="datetime" required>
+                    <p id="date-error" class="disabled-msg">Atsiprašau, antradieniais ir šeštadieniais fotosesijų nevykdau. Pasirinkite kitą dieną.</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Kurioje Kauno vietoje norėtumėte fotografuotis? *</label>
+                    <input type="text" name="location" required placeholder="Pvz.: Senamiestis, Ąžuolynas, apleistas pastatas...">
+                </div>
+
+                <div class="form-group">
+                    <label>Nuorodos į referencus (Moodboard/References)</label>
+                    <textarea name="references" rows="3" placeholder="Pinterest arba Instagram nuorodos..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submit-button">Registruotis fotosesijai</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        const datePicker = document.getElementById('date-picker');
+        const dateError = document.getElementById('date-error');
+        const submitBtn = document.getElementById('submit-button');
+        const form = document.getElementById('tfp-form');
+        const formCard = document.getElementById('form-card');
+        const successMsg = document.getElementById('success-message');
+
+        datePicker.addEventListener('input', function(e) {
+            const day = new Date(this.value).getDay();
+            if (day === 2 || day === 6) {
+                dateError.style.display = 'block';
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.3';
+                submitBtn.style.cursor = 'not-allowed';
+            } else {
+                dateError.style.display = 'none';
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+                submitBtn.style.cursor = 'pointer';
+            }
+        });
+
+        form.onsubmit = function() {
+            setTimeout(() => {
+                formCard.style.display = 'none';
+                successMsg.style.display = 'block';
+                window.scrollTo({ top: 200, behavior: 'smooth' });
+            }, 500);
+        };
+    </script>
+</body>
+</html>
